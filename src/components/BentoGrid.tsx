@@ -3,6 +3,7 @@
 import { Github, Linkedin, Mail, MapPin, Briefcase, GraduationCap, Code } from 'lucide-react';
 import styles from './BentoGrid.module.css';
 import PodcastPlayer from './PodcastPlayer';
+import MindMap from './MindMap';
 
 export default function BentoGrid() {
   const metrics = [
@@ -88,6 +89,9 @@ export default function BentoGrid() {
           <li><strong>MBA</strong> - Institute of Management Development & Research</li>
         </ul>
       </div>
+
+      {/* Visual Resume Mind Map */}
+      <MindMap />
     </div>
   );
 }

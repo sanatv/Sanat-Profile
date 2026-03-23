@@ -1,0 +1,146 @@
+.mindMapContainer {
+  grid-column: 1 / -1;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.header {
+  margin-bottom: 1.5rem;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.mapCanvas {
+  overflow-x: auto;
+  padding: 2rem 1rem;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  min-height: 400px;
+}
+
+/* node wrapper flexes horizontally */
+.nodeWrapper {
+  display: flex;
+  align-items: center; 
+}
+
+.nodeCard {
+  background: rgba(45, 55, 72, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.8rem 1.25rem;
+  border-radius: 6px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  white-space: nowrap;
+  position: relative;
+  z-index: 2;
+  margin: 0.5rem 0; 
+  transition: all 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  font-size: 0.95rem;
+}
+
+.nodeCard:hover {
+  background: rgba(74, 85, 104, 0.9);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.rootCard {
+  background: rgba(30, 41, 59, 1);
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  border-color: rgba(96, 165, 250, 0.4);
+}
+
+.iconCircle {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.8);
+  transition: background 0.2s;
+}
+
+.nodeCard:hover .iconCircle {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.childrenBranch {
+  display: flex;
+  flex-direction: column;
+  padding-left: 2.5rem;
+  position: relative;
+}
+
+/* Horizontal line from Parent to the vertical spine */
+.childrenBranch::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 2.5rem;
+  height: 2px;
+  background: #64748b;
+  z-index: 1;
+}
+
+/* Child container wrapper */
+.childContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Horizontal line from spine to the child node */
+.childContainer::before {
+  content: '';
+  position: absolute;
+  left: -2.5rem;
+  top: 50%;
+  width: 2.5rem;
+  height: 2px;
+  background: #64748b;
+}
+
+/* Vertical line Segments */
+.childContainer::after {
+  content: '';
+  position: absolute;
+  left: -2.5rem;
+  width: 2px;
+  background: #64748b;
+}
+
+/* First child has a line going DOWN from center to bottom */
+.childContainer:first-child::after {
+  top: 50%;
+  bottom: 0;
+}
+
+/* Last child has a line going UP from top to center */
+.childContainer:last-child::after {
+  top: 0;
+  bottom: 50%;
+}
+
+/* Middle children have a full line */
+.childContainer:not(:first-child):not(:last-child)::after {
+  top: 0;
+  bottom: 0;
+}
+
+/* If there is only ONE child, hide the vertical line! */
+.childContainer:first-child:last-child::after {
+  display: none;
+}
