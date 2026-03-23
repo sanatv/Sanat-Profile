@@ -2,6 +2,7 @@
 
 import { Github, Linkedin, Mail, MapPin, Briefcase, GraduationCap, Code } from 'lucide-react';
 import styles from './BentoGrid.module.css';
+import PodcastPlayer from './PodcastPlayer';
 
 export default function BentoGrid() {
   const metrics = [
@@ -35,6 +36,9 @@ export default function BentoGrid() {
             <Github size={20} /> GitHub
           </a>
         </div>
+
+        {/* Notebook LM Podcast Widget */}
+        <PodcastPlayer />
       </div>
 
       {/* Metrics Card */}
