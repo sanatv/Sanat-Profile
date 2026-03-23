@@ -86,6 +86,15 @@ export default function BentoGrid() {
         </ul>
       </div>
 
+      {/* Video Presentation */}
+      <div className={`glass-panel ${styles.card} ${styles.videoCard}`}>
+        <h3 className={styles.cardTitle}>Video Overview</h3>
+        <div className={styles.videoWrapper}>
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/D6mBZSFgveA" title="Video Overview" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        </div>
+        <p className={styles.disclaimer}>*Generated with help of AI</p>
+      </div>
+
       {/* Visual Resume Mind Map */}
       <MindMap />
     </div>
