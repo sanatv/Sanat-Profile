@@ -122,11 +122,42 @@ const mapData: NodeData = {
       ]
     },
     {
+      id: 'functional',
+      label: 'Functional',
+      children: [
+        {
+          id: 'erp',
+          label: 'ERP (Enterprise Resource Planning)',
+          children: [
+            { id: 'otc', label: 'OTC (Order to Cash)' },
+            { id: 'rtr', label: 'RTR (Record to Report)' }
+          ]
+        },
+        {
+          id: 'epm',
+          label: 'EPM (Enterprise Performance Management)',
+          children: [
+            { id: 'fpa', label: 'FP&A (Financial Planning & Analysis)' },
+            { id: 'cons', label: 'Consolidation' }
+          ]
+        },
+        {
+          id: 'scm',
+          label: 'SCM (Supply Chain Management)',
+          children: [
+            { id: 'mrp', label: 'MRP (Material Requirements Planning)' },
+            { id: 'bom', label: 'BOM (Bill of Materials)' },
+            { id: 'inv', label: 'Inventory' }
+          ]
+        }
+      ]
+    },
+    {
       id: 'clients',
       label: 'Notable Clients',
       children: [
         { id: 'cl1', label: 'NVIDIA' },
-        { id: 'cl2', label: 'Microsoft' },
+        { id: 'cl2', label: 'J&J' },
         { id: 'cl3', label: 'Kraft Foods' },
         { id: 'cl4', label: 'General Motors' }
       ]
