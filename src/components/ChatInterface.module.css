@@ -140,6 +140,10 @@
   gap: 0.75rem;
   flex-shrink: 0;
   background: rgba(255, 255, 255, 0.02);
+  position: relative;
+  z-index: 10;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 .input {
@@ -153,6 +157,8 @@
   font-size: 0.95rem;
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
+  position: relative;
+  z-index: 20;
 }
 
 .input:focus {

@@ -48,6 +48,9 @@
   min-height: 500px;
   position: sticky;
   top: 2rem;
+  z-index: 5;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 @media (max-width: 1024px) {
