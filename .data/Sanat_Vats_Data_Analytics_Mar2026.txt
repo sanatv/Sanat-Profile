@@ -1,0 +1,57 @@
+Sanat Vats
+sanatv@gmail.com |+1-224-420-1737 | Evanston, IL |https://www.linkedin.com/in/sanat
+Profile
+Strategic and results-driven Data & AI Executive with 20+ years of experience leading enterprise-scale data transformation, AI adoption, and analytics-driven growth across Fortune 500 organizations. Proven track record of building and scaling global data organizations (5–25+ teams), delivering $20M+ annual value through AI, advanced analytics, and cloud modernization.
+Expert in aligning data strategy with business outcomes—driving revenue growth, operational efficiency, and digital transformation. Deep experience in AI/GenAI (LLMs, Agentic AI), enterprise data governance, and modern data platforms (Azure, Databricks, GCP).
+Recognized for executive stakeholder leadership, building high-performing teams, and delivering large-scale transformation programs across finance, operations, and supply chain. Passionate about leveraging AI responsibly to unlock business value and competitive advantage.
+
+Core Competencies
+	•	Enterprise Data & AI Strategy
+	•	Generative AI & Agentic AI Transformation (LLMs, GPT, Gemini, Claude)
+	•	Data Governance, MDM & Regulatory Compliance
+	•	Cloud Data Platforms (Azure, Databricks, GCP)
+	•	Advanced Analytics & Predictive Modeling
+	•	Digital & Data Transformation (Fortune 500 scale)
+	•	P&L Ownership & Value Realization ($20M+ impact)
+	•	Executive Stakeholder Engagement (C-suite, Board-level)
+	•	Global Team Leadership & Operating Model Design
+	•	Data Monetization & Business Growth Enablement
+	•	AI Risk, Ethics & Responsible AI
+	•	Financial Planning & Analytics (FP&A) Transformation
+	•	SELECTED CLIENT ENGAGEMENTS (FORTUNE 500)
+	•	NVIDIA • Microsoft • Cisco Systems • Ford • General Motors • Kraft Foods • Mondelez • Tyson Foods • Mars • Equinix • Exelon • Moody’s • Diebold Nixdorf • Dentsply Sirona • Littelfuse
+	•	Delivered enterprise-scale Data, AI, and Digital Transformation programs across manufacturing, healthcare, technology, and consumer industries.
+	•	Strong Delivery skills
+	•	Enterprise Financial Planning & Forecasting; MRP, BOM
+	•	Team Leadership & Talent Development (25+ team)
+	•	Agentic Stock analysis tool – WIP - Agentic Stock Analysis
+Professional Experience
+EY – Chicago, IL Senior Director / Senior Manager – AI & Data Oct 2012 – Present
+	•	Lead Data & Analytics division with P&L responsibility of $5-10M; strategically aligned data initiatives to business goals resulting in consistent $20M+ revenue generation.
+	•	Established enterprise data governance frameworks for Fortune 500 clients, improving data accuracy, compliance, and cost-efficiency.
+	•	AI/ML adoption including Generative AI (OpenAI GPT models)including agentic to enhance analytics, automate processes, and generate actionable business insights.
+	•	Created multiple AI and agentic AI based apps that boost productivity and increased revenue
+	•	Directed Master Data Management and data warehouse optimization across multiple domains: Product, BOM, Customer, Vendor, and Finance for ERP, SCM, and EPM systems.
+	•	Led multiple financial and business transformation involving ERP, EPM and MRP implementation
+	•	Architected and delivered modern data platforms leveraging Azure, Databricks, and cloud-native solutions for scalability and cost efficiency.
+	•	Managed, coached, and expanded a diverse team of 25+ data professionals, fostering a culture of innovation and continuous learning.
+	•	Partnered with senior leadership and cross-functional teams to define and deliver data solutions aligned with strategic business priorities.
+	•	Led sales enablement and proposal development, supporting successful client engagements and long-term retention.
+Deloitte Consulting – Chicago, IL Consultant – Data & Analytics May 2011 – Sept 2012
+	•	Award-winning lead designer of Hyperion DRM solutions for a global technology client as part of Financial Business Architecture initiatives.
+	•	Directed metadata management and consolidation efforts, unifying Chart of Accounts across finance functions for improved reporting accuracy.
+	•	Developed and delivered accredited training on Hyperion Data Relationship Management, supporting skill development across Deloitte teams.
+	•	Cultivated trusted client relationships, driving future project opportunities and reinforcing Deloitte’s market position.
+Infosys Technologies – Bangalore, India / Chicago, IL Senior Consultant – EPM & Data Management Jan 2005 – May 2011
+	•	Led various programs in kraft foods with different teams in global delivery model. Single point of contact for client and key business stakeholders.
+	•	Led financial transformation programs for Kraft Foods and Cadbury integration projects, managing data migration, system integration, and hierarchy development.
+	•	Acted as Subject Matter Expert for global financial planning and consolidation systems, delivering solutions in complex onsite-offshore delivery models.
+	•	Developed BI and marketing analytics solutions for major consumer goods and manufacturing clients, enabling data-driven decision-making.
+	•	Delivered process improvements across multiple major acquisitions and reorganizations, ensuring seamless financial data flow and reporting.
+Education
+MIT Professional Education – June 2024 Applied Data Science Program (Generative AI, Python, ML) MBA – May 2003 Institute of Management Development and Research, Pune, India Bachelor of Engineering – May 2001 Muzaffarpur Institute of Technology, Muzaffarpur, India
+Representative Clients
+Nvidia, Kraft Foods, Adidas, Mondelez, Tyson Foods, Mars, GM, Ford, Dana, Cisco Systems, Equinix, Microsoft, Dentsply Sirona, Moody’s, Exelon, Diebold Nixdorf,  Littlefuse
+Skills
+P&L| People Management | Practice development| Data Governance | Master Data Management | AI & ML Integration | Cloud Data Platforms | Data Warehousing | Enterprise Performance Management | Business Intelligence | Agile Delivery |Python| Sci-Kit| Gen AI| |Agentic AI| Clustering | Prompt Engineering | Network and Graphs |Decision Tree | Random Forest |Neural Net | CNN |Finance Planning |Budgeting| Consolidation | MRP | Bill of Material| Data Bricks | ETL | SAP MM PP BPM | Oracle ERP |SAP MDG | Oracle PBCS | Oracle EDMCS | SQL |Anaplan |Onestream
+
