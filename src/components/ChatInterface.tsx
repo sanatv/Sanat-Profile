@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { Send, User, Bot, Volume2 } from 'lucide-react';
+import { Send, User, Bot } from 'lucide-react';
 import styles from './ChatInterface.module.css';
 
 export default function ChatInterface() {
@@ -14,23 +14,6 @@ export default function ChatInterface() {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
-
-  const speak = (text: string) => {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      
-      const voices = window.speechSynthesis.getVoices();
-      const preferredVoice = voices.find(v => (v.name.includes('Google') || v.name.includes('Siri')) && v.lang.includes('en-US')) 
-                          || voices.find(v => v.lang.includes('en-US')) 
-                          || null;
-                          
-      if (preferredVoice) utterance.voice = preferredVoice;
-      utterance.rate = 1.05;
-      utterance.pitch = 0.95;
-      window.speechSynthesis.speak(utterance);
-    }
-  };
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -101,15 +84,6 @@ export default function ChatInterface() {
             </div>
             <div className={styles.messageContent}>
               <div className={styles.text}>{m.content}</div>
-              {m.role === 'assistant' && !isLoading && (
-                <button 
-                  onClick={() => speak(m.content)}
-                  className={styles.speakBtn}
-                  title="Read aloud"
-                >
-                  <Volume2 size={14} /> Listen
-                </button>
-              )}
             </div>
           </div>
         ))}
