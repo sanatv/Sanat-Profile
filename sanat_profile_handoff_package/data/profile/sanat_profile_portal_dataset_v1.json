@@ -1,0 +1,649 @@
+{
+  "metadata": {
+    "title": "Sanat Vats Profile Portal Dataset v1",
+    "purpose": "Structured content backbone for professional profile portal, recruiter chatbot, knowledge graph, and resume variants.",
+    "generated_from": "User-provided project descriptions in ChatGPT conversation",
+    "notes": "Review for confidentiality, factual precision, and resume-safe wording before publication."
+  },
+  "projects": [
+    {
+      "Project Name": "Intelligent BOM & Planning Master Data Transformation",
+      "Client / Asset": "NVIDIA",
+      "Industry": "Semiconductor / Technology / Manufacturing",
+      "Your Role": "Lead Solution Architect",
+      "Business Problem": "GPU and networking BOM creation was semi-manual, fragile, and frequently impacted by design changes, consigned vs turnkey parts, yield logic, SKU/LIFNR complexity, and plant extension gaps.",
+      "Solution Summary": "Designed end-to-end BOM and planning master data architecture across EBOM, Reference BOM, Planning BOM, Sales BOM, NPI BOM, material master, plant extension, yield calculation, validation, and Production Version flow.",
+      "Technologies / Platforms": "SAP ECC; SAP S/4HANA; PLM; SAP BOM; Material Master; Python; Databricks; React; Streamlit; NetworkX",
+      "Capabilities": "SAP/S4 transformation; BOM architecture; AI-ready data foundation; supply chain data design; graph visualization; master data validation",
+      "Stakeholders": "Supply Chain; Planning; Manufacturing; IT; PLM; NPI plants; CEM teams",
+      "Outcomes / Value": "Faster and more accurate BOM/planning data creation; reduced manual effort; improved Production Version and PO readiness; stronger data quality",
+      "Target Role Alignment": "Enterprise Data & AI Leader; PPMD; CDO; SAP/MDM Leader",
+      "5-Line Portal Summary": "Designed intelligent BOM and planning master data architecture within a major ECC-to-S/4HANA transformation. Addressed semi-manual and fragile EBOM, Reference BOM, Planning BOM, NPI BOM, Sales BOM, SKU/LIFNR, plant extension, yield, and consigned/turnkey part processes. Used Python, Databricks, React/Streamlit prototypes, and NetworkX to analyze and visualize BOM relationships, SAP logic, and ABAP/BAPI process flows. Supported supply chain, planning, manufacturing, IT, PLM, CEM, and NPI stakeholders. Helped improve BOM quality, planning readiness, Production Version flow, and downstream PO/costing processes.",
+      "Tags": "SAP S/4HANA; BOM; EBOM; RBOM; PBOM; NPI; Material Master; Production Version; Python; Databricks; NetworkX; React; AI-ready Data; Supply Chain",
+      "Chatbot Keywords": "NVIDIA; BOM; SAP; S/4HANA; EBOM; Planning BOM; Reference BOM; Production Version; consigned; turnkey; yield; SKU LIFNR; Python; NetworkX; Databricks; supply chain"
+    },
+    {
+      "Project Name": "AI Financial Intelligence & Agentic Automation Platform",
+      "Client / Asset": "Artha",
+      "Industry": "Financial Analytics / Personal AI Product",
+      "Your Role": "Founder / Product Architect / Full-Stack AI Builder",
+      "Business Problem": "Investment, portfolio, market, SEC, options/futures, P&L, broker, tax, and sentiment data were fragmented across many systems and manual workflows.",
+      "Solution Summary": "Built a React-based AI financial intelligence platform integrating broker data, market data, SEC filings, financial statements, futures trend ML, portfolio P&L, LLM summarization, and agentic browser automation.",
+      "Technologies / Platforms": "React; Python; PostgreSQL; SQLite; IBKR; yFinance; SEC EDGAR; OpenAI; Gemini; XGBoost; Random Forest; Playwright; OpenClaw",
+      "Capabilities": "GenAI; Agentic AI; ML; LLM summarization; financial analytics; portfolio intelligence; broker automation; tax workflow automation",
+      "Stakeholders": "Self-built product; finance/investment users",
+      "Outcomes / Value": "Demonstrates hands-on AI/ML/full-stack product-building capability; supports investment decision intelligence and automation",
+      "Target Role Alignment": "AI Leader; AI Product Builder; FP&A AI Leader; Data/Cloud Leader",
+      "5-Line Portal Summary": "Built a React-based AI financial intelligence and agentic automation platform. Integrated broker data, market data, SEC filings, financial statements, portfolio P&L, options/futures analytics, news, sentiment, and tax workflow automation. Used OpenAI and Gemini for summarization and interpretation, and XGBoost/Random Forest for futures trend analysis on live data. Used Playwright/OpenClaw for broker statement download and AI-assisted browser automation. Demonstrates hands-on GenAI, ML, full-stack, finance, and agentic AI capability.",
+      "Tags": "GenAI; Agentic AI; React; Python; OpenAI; Gemini; XGBoost; Random Forest; IBKR; yFinance; SEC EDGAR; PostgreSQL; SQLite; Playwright; OpenClaw; Portfolio Analytics",
+      "Chatbot Keywords": "Artha; AI finance app; broker data; IBKR; SEC; 10-K; 10-Q; futures; options; P&L; OpenAI; Gemini; XGBoost; Random Forest; Playwright; OpenClaw; tax automation"
+    },
+    {
+      "Project Name": "Finance Data Foundation, MDM Architecture & Persona-Based Reporting",
+      "Client / Asset": "Mars",
+      "Industry": "CPG / Finance Transformation",
+      "Your Role": "Finance Data Strategy / MDM Architecture / Data Governance Lead",
+      "Business Problem": "Finance reporting needed stronger data foundations, persona-based KPI design, data dictionary, governance, hierarchy, and relationship structures across planning and consolidation.",
+      "Solution Summary": "Designed MDM architecture, finance data governance operating model, CR/workflow process, persona-based reporting for top finance roles, KPI/metric definitions, facts/dimensions, rules, calculations, and data dictionary.",
+      "Technologies / Platforms": "Azure; Data Lake; OneStream; Data Dictionary; MDM; Data Governance; Finance Data Model",
+      "Capabilities": "CFO reporting; MDM architecture; data governance; persona reporting; KPI design; data dictionary; AI-ready finance data",
+      "Stakeholders": "CFO; BU CFO; FP&A; Controller; Finance; Data Governance; IT",
+      "Outcomes / Value": "Created trusted finance data foundation for planning, consolidation, reporting, and future AI-enabled CFO analytics",
+      "Target Role Alignment": "Enterprise Data & AI Leader; FP&A Systems Leader; CDO; PPMD",
+      "5-Line Portal Summary": "Supported finance data management and reporting modernization for Mars. Designed MDM architecture, finance data governance operating model, CR/workflow processes, data dictionary, relationships, attributes, and data quality rules. Defined persona-based reporting for top finance roles, including KPIs, metrics, facts, dimensions, calculation rules, and report packages. Designed architecture between data lake planning data and OneStream consolidation. Built foundations for trusted CFO reporting and future AI-enabled finance analytics.",
+      "Tags": "Finance Data; MDM; Data Governance; CFO Reporting; Persona Reporting; OneStream; Azure; Data Dictionary; Data Quality; KPI Design; Data Lake",
+      "Chatbot Keywords": "Mars; finance reporting; persona; CFO; BU CFO; KPI; metrics; OneStream; data lake; MDM; governance; data dictionary; data quality; hierarchy"
+    },
+    {
+      "Project Name": "AI-Enabled FP&A Demo Product",
+      "Client / Asset": "EY AI Finance",
+      "Industry": "Internal Product / Finance AI",
+      "Your Role": "AI Finance Product Lead / Solution Architect / Demo Builder",
+      "Business Problem": "FP&A teams spend significant manual effort on driver-based analysis, scenario planning, variance explanations, and management commentary from EPM data.",
+      "Solution Summary": "Built demo product using AI agents on top of EPM data for driver-based analysis, scenario planning, variance analysis, management commentary, and natural-language finance Q&A.",
+      "Technologies / Platforms": "EPM data; GenAI; LLMs; Agentic AI; AI Commentary; Finance Q&A",
+      "Capabilities": "AI-enabled FP&A; agentic workflows; variance analysis; scenario planning; management commentary; CFO analytics",
+      "Stakeholders": "Finance; FP&A; CFO office; internal practice; client demo audiences",
+      "Outcomes / Value": "Demonstrated future-state AI-enabled FP&A and reduction of manual analysis/commentary effort",
+      "Target Role Alignment": "AI Leader; FP&A AI Leader; PPMD; Product Builder",
+      "5-Line Portal Summary": "Built an AI-enabled FP&A demo product on top of EPM data. The product supports driver-based analysis, scenario planning, variance analysis, management commentary, and natural-language finance Q&A. Designed agentic workflows with specialized agents for data retrieval, driver analysis, scenario modeling, variance explanation, and commentary generation. Demonstrates how GenAI can modernize FP&A and reduce manual finance analysis. Serves as a reusable market-facing AI finance accelerator.",
+      "Tags": "AI FP&A; GenAI; Agentic AI; EPM; Driver-Based Planning; Scenario Planning; Variance Analysis; Management Commentary; Finance Q&A",
+      "Chatbot Keywords": "EY AI Finance; FP&A AI; EPM; driver-based; scenario planning; variance analysis; commentary; management reporting; agents; CFO Q&A"
+    },
+    {
+      "Project Name": "S/4 CFIN, MDM, EPM & Finance Data Harmonization",
+      "Client / Asset": "GM",
+      "Industry": "Automotive / Finance Transformation",
+      "Your Role": "Finance Data Transformation Lead / MDM Solution Architect",
+      "Business Problem": "Finance data was spread across 20+ ERPs with inconsistent CoA, cost center, profit center, functional area, vehicle, account, architecture, and channel structures.",
+      "Solution Summary": "Supported multi-year finance transformation harmonizing ERP data into S/4 Central Finance, rationalizing CoA and finance dimensions, and integrating actuals, planning, forecasting, and consolidation.",
+      "Technologies / Platforms": "SAP S/4 CFIN; Oracle DRM; EDMCS; EPM; Planning Systems; Consolidation Systems",
+      "Capabilities": "Finance data harmonization; CFIN; MDM; CoA rationalization; ERP mapping; planning/consolidation integration",
+      "Stakeholders": "CFO/Finance; IT; ERP teams; Planning; Consolidation; Data Governance",
+      "Outcomes / Value": "Improved consistency between actuals, planning, forecasting, consolidation, and reporting; reduced reconciliation complexity",
+      "Target Role Alignment": "PPMD; FP&A Systems Leader; CDO; Enterprise Data Leader",
+      "5-Line Portal Summary": "Supported a multi-year finance transformation harmonizing data from 20+ ERPs into S/4 Central Finance and connected planning/consolidation platforms. Rationalized Chart of Accounts, cost center, profit center, functional area, vehicle, account, architecture, and channel dimensions using Oracle DRM. Designed master data standards, mapping logic, hierarchy governance, and ERP-to-CFIN integration. Supported CAPEX planning, sales forecasting, long-term planning, actuals, and consolidation alignment. Built trusted finance data foundations for CFO reporting and future AI-enabled FP&A.",
+      "Tags": "SAP CFIN; MDM; Oracle DRM; Finance Data Harmonization; CoA Rationalization; EPM; Planning; Consolidation; ERP Mapping",
+      "Chatbot Keywords": "GM; CFIN; S/4; 20 ERPs; CoA; cost center; profit center; functional area; vehicle; account; Oracle DRM; planning; consolidation"
+    },
+    {
+      "Project Name": "Global FP&A, M&A Finance Integration & EPM Transformation",
+      "Client / Asset": "Kraft / Cadbury / Mondelez",
+      "Industry": "CPG / Finance Transformation",
+      "Your Role": "Finance Transformation Lead / EPM Solution Architect",
+      "Business Problem": "Major M&A, restructuring, and spin-off activity required standardized global planning, forecasting, reporting, variance, and close processes.",
+      "Solution Summary": "Defined P&L forecasting methodology from board revenue direction to strategic finance plan, long-range plan, AOP, monthly forecast, variance analysis, management reporting, and EPM implementation.",
+      "Technologies / Platforms": "Oracle Hyperion; OFA; EPM; Planning; Close; Forecasting; Reporting",
+      "Capabilities": "FP&A transformation; M&A finance integration; EPM; variance analysis; FX; constant currency; price-volume-mix; EBITDA; cash flow",
+      "Stakeholders": "CFO/Finance; FP&A; Controllers; Business Units; Global Finance",
+      "Outcomes / Value": "Supported global planning/reporting standardization, M&A integration, spin-off readiness, variance analytics, and finance decision support",
+      "Target Role Alignment": "FP&A Systems Leader; PPMD; Enterprise Data Leader",
+      "5-Line Portal Summary": "Led finance systems and EPM work across major M&A, restructuring, and spin-off events. Defined global FP&A forecasting methodology across P&L lines, connecting board-level revenue direction to strategic finance plan, long-range plan, AOP, monthly forecast, variance analysis, and management reporting. Supported FX translation, constant currency, intercompany eliminations, allocations, price-volume-mix, EBITDA, cash flow, and KPI calculations. Worked across Oracle Hyperion and OFA-based finance systems. Demonstrates deep CFO systems, FP&A, and transformation expertise.",
+      "Tags": "FP&A; EPM; M&A; Oracle Hyperion; OFA; AOP; Forecasting; Variance Analysis; FX; Constant Currency; EBITDA; Cash Flow; Price Volume Mix",
+      "Chatbot Keywords": "Kraft; Mondelez; Cadbury; Danone; Hyperion; OFA; FP&A; AOP; long range plan; forecast; variance; FX; constant currency; EBITDA; PVM"
+    },
+    {
+      "Project Name": "Finance MDM, EPM, EDW & Consolidation Automation",
+      "Client / Asset": "Cisco",
+      "Industry": "Technology / Network Products",
+      "Your Role": "EPM / MDM Solution Architect",
+      "Business Problem": "Finance planning, EDW, and consolidation metadata needed governed synchronization across product, distribution, sales channel, and finance structures.",
+      "Solution Summary": "Implemented automated finance MDM and governance capabilities across planning, EDW, and consolidation environments.",
+      "Technologies / Platforms": "Oracle DRM; EPM; EDW; Consolidation Systems; Finance Metadata",
+      "Capabilities": "MDM automation; EPM governance; hierarchy management; EDW integration; finance data synchronization",
+      "Stakeholders": "Finance; Planning; Reporting; Consolidation; IT",
+      "Outcomes / Value": "Improved finance metadata consistency, reduced manual updates, enabled stronger planning/reporting alignment",
+      "Target Role Alignment": "FP&A Systems Leader; CDO; PPMD",
+      "5-Line Portal Summary": "Delivered finance MDM and EPM solution architecture for Cisco. Focused on automating master data and hierarchy governance across planning, EDW, and consolidation environments. Addressed industry-specific needs across network products, distribution, sales channel, and finance reporting structures. Improved synchronization and consistency of financial metadata across downstream systems. Demonstrates MDM automation, EPM governance, and finance data integration depth.",
+      "Tags": "Finance MDM; EPM; EDW; Consolidation; Oracle DRM; Metadata Automation; Hierarchy Governance; Sales Channel Reporting",
+      "Chatbot Keywords": "Cisco; DRM; EPM; EDW; consolidation; finance metadata; hierarchy; automation; product; distribution; sales channel"
+    },
+    {
+      "Project Name": "Utility Finance MDM, EPM & Regulatory Reporting Governance",
+      "Client / Asset": "Exelon",
+      "Industry": "Utilities / Energy / Regulated Industry",
+      "Your Role": "DRM / EPM Solution Architect and Data Governance Lead",
+      "Business Problem": "Multiple Hyperion/Essbase cubes needed consistent metadata, project-based reporting, utility finance structures, and regulatory-aligned reporting.",
+      "Solution Summary": "Implemented DRM-based finance master data governance across 10+ Hyperion/Essbase cubes supporting planning, consolidation, project-based analysis, energy reporting, and FERC-style regulatory needs.",
+      "Technologies / Platforms": "Oracle DRM; Hyperion; Essbase; EPM; Planning; Consolidation",
+      "Capabilities": "Regulatory finance data governance; project-based reporting; metadata governance; cube synchronization",
+      "Stakeholders": "Finance; Regulatory Reporting; Planning; Consolidation; IT",
+      "Outcomes / Value": "Improved reporting consistency, control, regulatory alignment, and cube-level governance",
+      "Target Role Alignment": "CDO; FP&A Systems Leader; PPMD",
+      "5-Line Portal Summary": "Implemented DRM-based finance master data governance across 10+ Hyperion and Essbase cubes. Supported planning, consolidation, project-based reporting, utility finance analysis, and regulatory-driven reporting. Addressed utility-industry needs including energy, project, and FERC-style reporting structures. Improved metadata consistency, reporting control, and cube-level governance. Demonstrates finance data governance in a regulated industry environment.",
+      "Tags": "Utility Finance; Regulatory Reporting; FERC; Oracle DRM; Hyperion; Essbase; EPM; Project Reporting; Metadata Governance",
+      "Chatbot Keywords": "Exelon; utility; energy; FERC; Hyperion; Essbase; DRM; regulatory reporting; project-based reporting; metadata governance"
+    },
+    {
+      "Project Name": "Revenue Recognition Data Transformation & ASC 606 Compliance Solution",
+      "Client / Asset": "Moody’s Analytics",
+      "Industry": "Financial Services / Compliance",
+      "Your Role": "Finance Data / Revenue Recognition Solution Lead",
+      "Business Problem": "Revenue recognition needed to move from header-level to line-level treatment, with recognition based on product sale, service delivery, or fulfillment logic.",
+      "Solution Summary": "Designed custom data solution integrating PeopleSoft, Salesforce, Zuora, and SQL Server to support line-level revenue identification, ASC 606-style compliance, and finance traceability.",
+      "Technologies / Platforms": "PeopleSoft; Salesforce; Zuora; SQL Server; Custom Data Model",
+      "Capabilities": "Revenue recognition; ASC 606; finance compliance; SQL solution; CRM/ERP/billing integration",
+      "Stakeholders": "Finance; Accounting; Compliance; IT; Revenue Operations",
+      "Outcomes / Value": "Improved revenue recognition traceability, compliance support, and line-level finance reporting logic",
+      "Target Role Alignment": "FP&A/CFO Systems Leader; CDO; PPMD",
+      "5-Line Portal Summary": "Designed a custom revenue recognition data solution to support ASC 606-style compliance. Moved revenue recognition logic toward line-level identification rather than header-level treatment. Integrated PeopleSoft, Salesforce, Zuora, and SQL Server to connect contracts, products, services, billing, and recognition events. Supported recognition based on product sale, service delivery, or fulfillment logic. Improved finance traceability, compliance support, and revenue reporting control.",
+      "Tags": "Revenue Recognition; ASC 606; SQL Server; PeopleSoft; Salesforce; Zuora; Compliance; Finance Data; Line-Level Revenue",
+      "Chatbot Keywords": "Moody’s; revenue recognition; ASC 606; line level; PeopleSoft; Salesforce; Zuora; SQL Server; contract; billing; service delivery"
+    },
+    {
+      "Project Name": "Finance Reporting, Planning Modernization & MDM Architecture",
+      "Client / Asset": "Tyson Foods",
+      "Industry": "CPG / Food / Finance Transformation",
+      "Your Role": "Data and Reporting Lead",
+      "Business Problem": "Executive/QBR reporting and planning were highly manual, Excel-driven, and inconsistent across BUs/segments, with systems mainly used for BPC uploads.",
+      "Solution Summary": "Designed GCP-based finance reporting architecture and master data solutioning across SAP, Anaplan, BPC, Collibra, material master, BOM, and finance reporting processes.",
+      "Technologies / Platforms": "GCP; SAP; Anaplan; BPC; Collibra; Palantir exposure; MDM; Reporting Analytics",
+      "Capabilities": "Finance reporting modernization; cloud architecture; MDM; data governance; QBR reporting; planning analytics",
+      "Stakeholders": "Finance; Executive Reporting; BU Finance; IT; Data Governance",
+      "Outcomes / Value": "Streamlined financial planning/reporting, improved trust in data, supported standardization across segments and BUs",
+      "Target Role Alignment": "Enterprise Data & AI Leader; FP&A Systems Leader; PPMD; CDO",
+      "5-Line Portal Summary": "Served as Data and Reporting Lead for finance transformation at Tyson Foods. Designed GCP-based reporting architecture and master data solutioning across SAP, Anaplan, BPC, Collibra, material master, BOM, and finance reporting processes. Addressed manual Excel-heavy planning and reporting processes across BUs and segments. Supported executive reporting, QBR, finance analytics, and planning modernization. Helped build trusted data foundations and standardization across business units.",
+      "Tags": "GCP; SAP; Anaplan; BPC; Collibra; Finance Reporting; QBR; MDM; BOM; Material Master; Planning Analytics",
+      "Chatbot Keywords": "Tyson; finance reporting; QBR; GCP; SAP; Anaplan; BPC; Collibra; BOM; material master; planning; Excel; segments"
+    }
+  ],
+  "resume_bullets": [
+    {
+      "Project": "NVIDIA",
+      "AI Leader Bullet": "Led AI-assisted BOM and planning master data analysis using Python, Databricks, React/Streamlit prototypes, and NetworkX graph visualization to improve understanding of complex EBOM, Reference BOM, Planning BOM, NPI BOM, Sales BOM, and Production Version flows.",
+      "PPMD / Consulting Bullet": "Served as lead solution architect within a large S/4HANA transformation workstream, coordinating supply chain, planning, manufacturing, IT, and PLM stakeholders to redesign complex BOM and planning master data processes.",
+      "FP&A / CFO Systems Bullet": "Improved BOM quantity, yield, consigned/turnkey, and planning master data logic to support more accurate costing, Production Version creation, purchase order readiness, and downstream planning processes.",
+      "CDO / Data & AI Bullet": "Designed end-to-end SAP BOM and planning master data architecture across material, plant, vendor, SKU/LIFNR, yield, alternate BOM, and data quality structures to improve traceability, validation, and governance."
+    },
+    {
+      "Project": "Artha",
+      "AI Leader Bullet": "Built a React-based AI financial intelligence and agentic automation platform integrating broker data, SEC filings, market data, futures analytics, portfolio P&L, tax workflows, and LLM-based summarization using OpenAI, Gemini, Python, PostgreSQL, SQLite, Playwright, and OpenClaw.",
+      "PPMD / Consulting Bullet": "Created a differentiated AI product asset demonstrating how finance, investment analytics, data engineering, ML, and agentic automation can be combined into a practical decision-intelligence platform.",
+      "FP&A / CFO Systems Bullet": "Developed AI-enabled financial analytics to analyze 10-K/10-Q filings, financial statements, portfolio performance, daily P&L, options/futures signals, risk, sentiment, and market trends through a unified decision platform.",
+      "CDO / Data & AI Bullet": "Designed a data architecture integrating brokerage, market, SEC, portfolio, tax, news, and sentiment data into structured PostgreSQL/SQLite-backed analytics pipelines for reusable AI and reporting use cases."
+    },
+    {
+      "Project": "Mars",
+      "AI Leader Bullet": "Established AI-ready finance data foundations by defining governed metrics, hierarchies, relationships, data quality rules, and persona-based reporting structures needed for future CFO decision intelligence.",
+      "PPMD / Consulting Bullet": "Led advisory and solution design across finance data management, MDM architecture, governance operating model, CR/workflow process, and reporting modernization for senior finance and data stakeholders.",
+      "FP&A / CFO Systems Bullet": "Developed persona-based finance reporting design for top finance roles, identifying use cases, KPIs, metrics, facts, dimensions, calculation rules, report packages, and level-of-detail requirements for CFO, BU CFO, FP&A, controller, and commercial finance users.",
+      "CDO / Data & AI Bullet": "Designed finance MDM architecture, data governance operating model, data dictionary, attributes, relationships, critical data elements, data quality rules, and stewardship workflows to improve trusted reporting."
+    },
+    {
+      "Project": "EY AI Finance",
+      "AI Leader Bullet": "Designed and built an AI-enabled FP&A demo product using agentic workflows to perform driver-based analysis, scenario planning, variance analysis, management commentary, and natural-language Q&A on top of EPM data.",
+      "PPMD / Consulting Bullet": "Built a market-facing AI finance demo accelerator to demonstrate how GenAI and agentic workflows can modernize FP&A, reduce manual analysis effort, and improve executive reporting.",
+      "FP&A / CFO Systems Bullet": "Created AI-driven finance analytics capabilities that connect EPM data with business drivers, planning scenarios, variance explanations, and CFO-ready management commentary.",
+      "CDO / Data & AI Bullet": "Designed reusable AI and data patterns for finance analytics by structuring EPM data, business drivers, variance logic, and commentary workflows for governed analytical consumption."
+    },
+    {
+      "Project": "GM",
+      "AI Leader Bullet": "Created trusted finance data foundations across ERP, CFIN, planning, and consolidation systems to support future AI-enabled FP&A, forecasting, and CFO decision intelligence.",
+      "PPMD / Consulting Bullet": "Led finance data harmonization and MDM solution design workstreams within a multi-year transformation, aligning stakeholders across ERP, CFIN, planning, consolidation, and data governance functions.",
+      "FP&A / CFO Systems Bullet": "Supported harmonization of finance data from 20+ ERP systems into S/4 Central Finance, rationalizing Chart of Accounts, cost center, profit center, functional area, vehicle, account, architecture, and channel dimensions using Oracle DRM.",
+      "CDO / Data & AI Bullet": "Established finance data standards, mapping logic, hierarchy governance, and MDM processes to improve alignment across ERP actuals, CFIN, planning, forecasting, and consolidation platforms."
+    },
+    {
+      "Project": "Kraft / Cadbury / Mondelez",
+      "AI Leader Bullet": "Built deep finance-domain foundations needed for AI-enabled FP&A solutions, including variance logic, planning drivers, FX, price-volume-mix, constant currency, EBITDA, cash flow, and management reporting structures.",
+      "PPMD / Consulting Bullet": "Served as client-facing finance systems lead across complex global transformation and M&A integration programs, translating planning methodology, reporting requirements, and operating model changes into scalable EPM solutions.",
+      "FP&A / CFO Systems Bullet": "Defined global FP&A forecasting methodology across P&L lines, connecting board-level revenue direction to strategic finance plan, long-range plan, annual operating plan, monthly forecast, variance analysis, and management reporting.",
+      "CDO / Data & AI Bullet": "Designed standardized finance data and reporting structures across global planning, close, M&A integration, spin-off, hierarchy, scenario, and management reporting processes."
+    },
+    {
+      "Project": "Cisco",
+      "AI Leader Bullet": "Automated governed finance data flows across planning, EDW, and consolidation environments, creating reusable data foundations for analytics and future AI-enabled finance reporting.",
+      "PPMD / Consulting Bullet": "Led finance MDM and EPM solution architecture for Cisco, improving synchronization of financial metadata, hierarchies, product structures, distribution views, and sales channel reporting.",
+      "FP&A / CFO Systems Bullet": "Implemented automated finance MDM and governance capabilities across planning, EDW, and consolidation systems to improve consistency of finance planning and reporting structures.",
+      "CDO / Data & AI Bullet": "Designed automated MDM and hierarchy governance processes to synchronize finance metadata across EDW, planning, consolidation, product, distribution, and sales channel reporting structures."
+    },
+    {
+      "Project": "Exelon",
+      "AI Leader Bullet": "Strengthened regulated finance data foundations required for analytics and future AI use cases by improving metadata consistency across planning, consolidation, and regulatory reporting structures.",
+      "PPMD / Consulting Bullet": "Led DRM-based finance master data governance across 10+ Hyperion and Essbase cubes, supporting planning, consolidation, project-based analysis, utility finance reporting, and regulatory-driven reporting needs.",
+      "FP&A / CFO Systems Bullet": "Improved planning, consolidation, project-based reporting, utility finance analysis, and regulatory reporting consistency across 10+ Hyperion/Essbase cubes.",
+      "CDO / Data & AI Bullet": "Implemented hierarchy, attribute, and metadata governance processes to improve consistency, control, and reporting reliability across a regulated energy finance environment."
+    },
+    {
+      "Project": "Moody’s Analytics",
+      "AI Leader Bullet": "Created structured revenue recognition data logic that can support future AI-enabled compliance analytics, contract intelligence, and finance traceability use cases.",
+      "PPMD / Consulting Bullet": "Led finance data solution design for revenue recognition transformation, translating accounting compliance requirements into system integration, data model, and SQL-based implementation logic.",
+      "FP&A / CFO Systems Bullet": "Designed revenue recognition data solution to support ASC 606-style compliance, enabling line-level revenue identification and recognition based on product sale, service delivery, and fulfillment events.",
+      "CDO / Data & AI Bullet": "Integrated PeopleSoft, Salesforce, Zuora, and SQL Server data to support custom revenue recognition logic, traceability, reporting, and finance controls across contract, billing, and revenue processes."
+    },
+    {
+      "Project": "Tyson Foods",
+      "AI Leader Bullet": "Designed cloud-based trusted finance data foundations across SAP, Anaplan, BPC, Collibra, and GCP to support analytics modernization and future AI-enabled reporting.",
+      "PPMD / Consulting Bullet": "Served as client-facing Data and Reporting Lead, translating finance reporting pain points, BU-specific planning processes, and executive reporting needs into scalable cloud, MDM, and analytics solution design.",
+      "FP&A / CFO Systems Bullet": "Led data and reporting design for finance transformation, modernizing executive reporting, QBR, planning, and finance analytics across business units and segments while reducing reliance on manual Excel-based processes.",
+      "CDO / Data & AI Bullet": "Defined master data architecture and governance approach across material master, BOM, and finance reporting dimensions to improve standardization, data trust, and reporting consistency across business units."
+    }
+  ],
+  "chatbot_intents": [
+    {
+      "intent": "What is Sanat’s AI experience?",
+      "best_projects": "Artha; EY AI Finance; NVIDIA; Mars",
+      "answer_direction": "Highlight GenAI, Agentic AI, LLMs, OpenAI/Gemini, ML models, AI finance, AI-ready data foundations, Python/React/NetworkX."
+    },
+    {
+      "intent": "Does Sanat have hands-on technical depth?",
+      "best_projects": "Artha; NVIDIA; EY AI Finance",
+      "answer_direction": "Mention React, Python, PostgreSQL, SQLite, XGBoost, Random Forest, Playwright, OpenClaw, NetworkX, Databricks, SEC EDGAR, APIs."
+    },
+    {
+      "intent": "Is Sanat fit for PPMD / consulting leadership?",
+      "best_projects": "Mars; GM; NVIDIA; Kraft; Tyson; EY AI Finance",
+      "answer_direction": "Emphasize advisory, client-facing solution architecture, stakeholder management, transformation roadmaps, large enterprise programs, accelerators."
+    },
+    {
+      "intent": "What is Sanat’s FP&A experience?",
+      "best_projects": "Kraft; GM; Mars; Tyson; EY AI Finance; Moody’s",
+      "answer_direction": "Emphasize AOP, long-range planning, monthly forecast, variance analysis, scenario planning, EPM, CFIN, OneStream, Anaplan, Hyperion."
+    },
+    {
+      "intent": "What is Sanat’s CDO / Data Governance experience?",
+      "best_projects": "Mars; GM; Tyson; Cisco; Exelon; NVIDIA",
+      "answer_direction": "Emphasize MDM, governance operating model, data dictionary, stewardship, CR workflow, data quality, master data standards, hierarchy governance."
+    },
+    {
+      "intent": "What is Sanat’s SAP experience?",
+      "best_projects": "NVIDIA; GM; Tyson",
+      "answer_direction": "Emphasize S/4HANA, CFIN, SAP BOM, material master, Production Version, plant extension, SAP integration with planning/reporting."
+    },
+    {
+      "intent": "Has Sanat worked in cloud data platforms?",
+      "best_projects": "Tyson; Mars; NVIDIA; Artha",
+      "answer_direction": "Emphasize GCP, Azure, Databricks, data lake, cloud reporting architecture, PostgreSQL/SQLite-backed app architecture."
+    },
+    {
+      "intent": "Has Sanat worked in regulated/compliance environments?",
+      "best_projects": "Moody’s; Exelon; GM",
+      "answer_direction": "Emphasize ASC 606-style revenue recognition, FERC-style regulatory reporting, finance controls, traceability, governance."
+    },
+    {
+      "intent": "What industries has Sanat worked in?",
+      "best_projects": "All",
+      "answer_direction": "Semiconductor, CPG, Food, Automotive, Technology, Utilities, Financial Services, Consulting."
+    },
+    {
+      "intent": "What makes Sanat different?",
+      "best_projects": "Artha; NVIDIA; Kraft; Mars; GM",
+      "answer_direction": "Position as rare combination of executive advisory + finance depth + SAP/MDM/data governance + hands-on AI/full-stack product building."
+    }
+  ],
+  "knowledge_graph_triples": [
+    {
+      "subject": "Sanat",
+      "relationship": "built",
+      "object": "Artha AI Financial Intelligence Platform"
+    },
+    {
+      "subject": "Artha",
+      "relationship": "uses",
+      "object": "React"
+    },
+    {
+      "subject": "Artha",
+      "relationship": "uses",
+      "object": "OpenAI"
+    },
+    {
+      "subject": "Artha",
+      "relationship": "uses",
+      "object": "Gemini"
+    },
+    {
+      "subject": "Artha",
+      "relationship": "uses",
+      "object": "XGBoost"
+    },
+    {
+      "subject": "Artha",
+      "relationship": "uses",
+      "object": "Random Forest"
+    },
+    {
+      "subject": "Artha",
+      "relationship": "uses",
+      "object": "Playwright"
+    },
+    {
+      "subject": "Artha",
+      "relationship": "demonstrates",
+      "object": "Agentic AI"
+    },
+    {
+      "subject": "Artha",
+      "relationship": "supports",
+      "object": "Financial Decision Intelligence"
+    },
+    {
+      "subject": "Sanat",
+      "relationship": "led",
+      "object": "NVIDIA Intelligent BOM Transformation"
+    },
+    {
+      "subject": "NVIDIA Project",
+      "relationship": "uses",
+      "object": "SAP S/4HANA"
+    },
+    {
+      "subject": "NVIDIA Project",
+      "relationship": "uses",
+      "object": "Python"
+    },
+    {
+      "subject": "NVIDIA Project",
+      "relationship": "uses",
+      "object": "NetworkX"
+    },
+    {
+      "subject": "NVIDIA Project",
+      "relationship": "supports",
+      "object": "Supply Chain Planning"
+    },
+    {
+      "subject": "NVIDIA Project",
+      "relationship": "demonstrates",
+      "object": "AI-ready Data Architecture"
+    },
+    {
+      "subject": "Sanat",
+      "relationship": "designed",
+      "object": "Mars Finance Data Foundation"
+    },
+    {
+      "subject": "Mars Project",
+      "relationship": "uses",
+      "object": "OneStream"
+    },
+    {
+      "subject": "Mars Project",
+      "relationship": "uses",
+      "object": "Azure Data Lake"
+    },
+    {
+      "subject": "Mars Project",
+      "relationship": "demonstrates",
+      "object": "Finance MDM Architecture"
+    },
+    {
+      "subject": "Mars Project",
+      "relationship": "supports",
+      "object": "CFO Reporting"
+    },
+    {
+      "subject": "Sanat",
+      "relationship": "built",
+      "object": "EY AI Finance Demo Product"
+    },
+    {
+      "subject": "EY AI Finance",
+      "relationship": "uses",
+      "object": "Agentic AI"
+    },
+    {
+      "subject": "EY AI Finance",
+      "relationship": "supports",
+      "object": "Driver-Based Planning"
+    },
+    {
+      "subject": "EY AI Finance",
+      "relationship": "supports",
+      "object": "Variance Commentary"
+    },
+    {
+      "subject": "EY AI Finance",
+      "relationship": "demonstrates",
+      "object": "AI-enabled FP&A"
+    },
+    {
+      "subject": "Sanat",
+      "relationship": "supported",
+      "object": "GM Finance Data Harmonization"
+    },
+    {
+      "subject": "GM Project",
+      "relationship": "uses",
+      "object": "SAP Central Finance"
+    },
+    {
+      "subject": "GM Project",
+      "relationship": "uses",
+      "object": "Oracle DRM"
+    },
+    {
+      "subject": "GM Project",
+      "relationship": "harmonizes",
+      "object": "20+ ERP Systems"
+    },
+    {
+      "subject": "GM Project",
+      "relationship": "demonstrates",
+      "object": "Finance Data Governance"
+    },
+    {
+      "subject": "Sanat",
+      "relationship": "led",
+      "object": "Kraft Mondelez FP&A Transformation"
+    },
+    {
+      "subject": "Kraft Project",
+      "relationship": "uses",
+      "object": "Oracle Hyperion"
+    },
+    {
+      "subject": "Kraft Project",
+      "relationship": "supports",
+      "object": "Long Range Planning"
+    },
+    {
+      "subject": "Kraft Project",
+      "relationship": "supports",
+      "object": "AOP"
+    },
+    {
+      "subject": "Kraft Project",
+      "relationship": "supports",
+      "object": "Price Volume Mix Analysis"
+    },
+    {
+      "subject": "Kraft Project",
+      "relationship": "demonstrates",
+      "object": "FP&A Transformation"
+    },
+    {
+      "subject": "Sanat",
+      "relationship": "implemented",
+      "object": "Cisco Finance MDM Automation"
+    },
+    {
+      "subject": "Cisco Project",
+      "relationship": "uses",
+      "object": "Oracle DRM"
+    },
+    {
+      "subject": "Cisco Project",
+      "relationship": "supports",
+      "object": "EDW"
+    },
+    {
+      "subject": "Cisco Project",
+      "relationship": "supports",
+      "object": "Consolidation"
+    },
+    {
+      "subject": "Cisco Project",
+      "relationship": "demonstrates",
+      "object": "Finance Metadata Automation"
+    },
+    {
+      "subject": "Sanat",
+      "relationship": "implemented",
+      "object": "Exelon Regulatory Finance Governance"
+    },
+    {
+      "subject": "Exelon Project",
+      "relationship": "uses",
+      "object": "Hyperion"
+    },
+    {
+      "subject": "Exelon Project",
+      "relationship": "uses",
+      "object": "Essbase"
+    },
+    {
+      "subject": "Exelon Project",
+      "relationship": "supports",
+      "object": "FERC Reporting"
+    },
+    {
+      "subject": "Exelon Project",
+      "relationship": "demonstrates",
+      "object": "Regulated Finance Data Governance"
+    },
+    {
+      "subject": "Sanat",
+      "relationship": "designed",
+      "object": "Moody’s Revenue Recognition Solution"
+    },
+    {
+      "subject": "Moody’s Project",
+      "relationship": "uses",
+      "object": "PeopleSoft"
+    },
+    {
+      "subject": "Moody’s Project",
+      "relationship": "uses",
+      "object": "Salesforce"
+    },
+    {
+      "subject": "Moody’s Project",
+      "relationship": "uses",
+      "object": "Zuora"
+    },
+    {
+      "subject": "Moody’s Project",
+      "relationship": "uses",
+      "object": "SQL Server"
+    },
+    {
+      "subject": "Moody’s Project",
+      "relationship": "supports",
+      "object": "ASC 606 Compliance"
+    },
+    {
+      "subject": "Sanat",
+      "relationship": "led_data_reporting",
+      "object": "Tyson Finance Transformation"
+    },
+    {
+      "subject": "Tyson Project",
+      "relationship": "uses",
+      "object": "GCP"
+    },
+    {
+      "subject": "Tyson Project",
+      "relationship": "uses",
+      "object": "SAP"
+    },
+    {
+      "subject": "Tyson Project",
+      "relationship": "uses",
+      "object": "Anaplan"
+    },
+    {
+      "subject": "Tyson Project",
+      "relationship": "uses",
+      "object": "Collibra"
+    },
+    {
+      "subject": "Tyson Project",
+      "relationship": "supports",
+      "object": "QBR Reporting"
+    }
+  ],
+  "tags": {
+    "Role Tags": [
+      "AI Leader",
+      "PPMD / Consulting Leader",
+      "FP&A Systems Leader",
+      "CDO / Head of Data & AI",
+      "Solution Architect",
+      "Product Builder"
+    ],
+    "Capability Tags": [
+      "GenAI",
+      "Agentic AI",
+      "Data Governance",
+      "MDM",
+      "Cloud Data Platform",
+      "SAP S/4HANA",
+      "FP&A",
+      "EPM",
+      "Finance Transformation",
+      "Supply Chain Data",
+      "Revenue Recognition",
+      "Regulatory Reporting"
+    ],
+    "Technology Tags": [
+      "OpenAI",
+      "Gemini",
+      "Python",
+      "React",
+      "PostgreSQL",
+      "SQLite",
+      "XGBoost",
+      "Random Forest",
+      "Playwright",
+      "OpenClaw",
+      "NetworkX",
+      "Databricks",
+      "Azure",
+      "GCP",
+      "SAP S/4HANA",
+      "SAP CFIN",
+      "Oracle DRM",
+      "Oracle Hyperion",
+      "OneStream",
+      "Anaplan",
+      "Collibra",
+      "SQL Server",
+      "PeopleSoft",
+      "Salesforce",
+      "Zuora"
+    ],
+    "Outcome Tags": [
+      "AI-readiness",
+      "Trusted Reporting",
+      "Automation",
+      "Reduced Manual Effort",
+      "Data Quality",
+      "Planning Modernization",
+      "Reporting Standardization",
+      "Compliance",
+      "Traceability",
+      "Executive Decision Support"
+    ]
+  }
+}

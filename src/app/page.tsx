@@ -1,22 +1,30 @@
-import ChatInterface from '@/components/ChatInterface';
-import BentoGrid from '@/components/BentoGrid';
-import styles from './page.module.css';
+import ProfilePortal from "@/components/ProfilePortal";
+import {
+  BUSINESS_FUNCTIONS,
+  CAREER_TIMELINE,
+  EDUCATION,
+  EXECUTIVE_SUMMARY,
+  FEATURED_PROJECT_IDS,
+  INDUSTRIES,
+  PROFILE_TAGS,
+  PUBLIC_KNOWLEDGE_GRAPH_TRIPLES,
+  PUBLIC_PROJECTS,
+  TARGET_ROLES,
+} from "@/lib/profile-data";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <header className={styles.header}>
-        <h1 className="text-gradient">Sanat Vats</h1>
-        <p>Strategic Data & AI Executive</p>
-      </header>
-      
-      <div className={styles.bentoSection}>
-        <BentoGrid />
-      </div>
-
-      <div className={styles.chatSection}>
-        <ChatInterface />
-      </div>
-    </main>
+    <ProfilePortal
+      summary={EXECUTIVE_SUMMARY}
+      projects={PUBLIC_PROJECTS}
+      tags={PROFILE_TAGS}
+      roles={TARGET_ROLES}
+      industries={INDUSTRIES}
+      businessFunctions={BUSINESS_FUNCTIONS}
+      graphTriples={PUBLIC_KNOWLEDGE_GRAPH_TRIPLES}
+      featuredProjectIds={FEATURED_PROJECT_IDS}
+      careerTimeline={CAREER_TIMELINE}
+      education={EDUCATION}
+    />
   );
 }

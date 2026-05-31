@@ -4,8 +4,14 @@ import { useRef, useEffect, useState } from 'react';
 import { Send, User, Bot } from 'lucide-react';
 import styles from './ChatInterface.module.css';
 
+type ChatMessage = {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+};
+
 export default function ChatInterface() {
-  const [messages, setMessages] = useState<any[]>([]);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -20,7 +26,7 @@ export default function ChatInterface() {
     if (!inputValue || isLoading) return;
     
     // Natively append user message
-    const userMessage = { id: Date.now().toString(), role: 'user', content: inputValue };
+    const userMessage: ChatMessage = { id: Date.now().toString(), role: 'user', content: inputValue };
     const newMessages = [...messages, userMessage];
     setMessages(newMessages);
     setInputValue('');
@@ -64,7 +70,7 @@ export default function ChatInterface() {
       <div className={styles.chatHeader}>
         <div>
           <h2 className="text-gradient">AI Recruiter Assistant</h2>
-          <p className={styles.subtitle}>Ask me anything about Sanat's profile</p>
+          <p className={styles.subtitle}>Ask me anything about Sanat&apos;s profile</p>
         </div>
       </div>
       
@@ -72,12 +78,12 @@ export default function ChatInterface() {
         {messages.length === 0 && (
           <div className={styles.emptyState}>
             <Bot size={48} className={styles.emptyIcon} />
-            <p>Hi! I'm Sanat's AI Assistant.</p>
-            <p style={{marginTop: '8px', fontSize: '0.9rem'}}>Try asking: "What was his impact at EY?"</p>
+            <p>Hi! I&apos;m Sanat&apos;s AI Assistant.</p>
+            <p style={{marginTop: '8px', fontSize: '0.9rem'}}>Try asking: &quot;What is his AI transformation experience?&quot;</p>
           </div>
         )}
         
-        {messages.map((m: any) => (
+        {messages.map((m) => (
           <div key={m.id} className={`${styles.messageWrapper} ${m.role === 'user' ? styles.user : styles.assistant}`}>
             <div className={styles.avatar}>
               {m.role === 'user' ? <User size={18} /> : <Bot size={18} />}
@@ -102,7 +108,7 @@ export default function ChatInterface() {
         <input
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          placeholder="e.g. Tell me about his experience at EY..."
+          placeholder="e.g. Tell me about his AI transformation experience..."
           className={styles.input}
           disabled={isLoading}
         />
