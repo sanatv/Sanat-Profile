@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: sanat-profile
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start -- -p $PORT
+    envVars:
+      - key: NODE_VERSION
+        value: 22.12.0
+      - key: OPENAI_API_KEY
+        sync: false
