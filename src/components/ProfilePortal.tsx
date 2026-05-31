@@ -82,6 +82,13 @@ const emptyFilters: Filters = {
   businessFunction: "",
 };
 
+const executiveHighlightTitles = [
+  "Enterprise Transformation Leadership",
+  "Executive Advisory with Hands-On AI Delivery",
+  "Trusted AI-Ready Data Foundations",
+  "Scalable Business Architecture Across Functions",
+];
+
 const sectionLinks = [
   ["profile", "Profile"],
   ["experience", "Experience"],
@@ -95,15 +102,6 @@ const sectionLinks = [
   ["knowledge-graph", "Graph"],
   ["ask-profile", "Ask"],
 ];
-
-const roleDescriptions: Record<string, string> = {
-  "Consulting Partner / PPMD Track":
-    "Client-facing transformation leadership across complex data, finance, MDM, SAP, and AI modernization programs.",
-  "AI-enabled FP&A / CFO Systems Leader":
-    "Finance data, EPM, planning, forecasting, variance, reporting, and AI-assisted decision intelligence.",
-  "CDO / Head of Data & AI":
-    "Trusted data foundations, governance operating models, stewardship, MDM, data quality, and AI-ready platforms.",
-};
 
 const matches = (value: string, selected: string) =>
   !selected || value.toLowerCase().includes(selected.toLowerCase()) || selected.toLowerCase().includes(value.toLowerCase());
@@ -304,9 +302,9 @@ export default function ProfilePortal({
           <h2>Transformation leader for AI-ready data, CFO systems, and enterprise governance</h2>
         </div>
         <div className={styles.summaryGrid}>
-          {summary.highlights.map((highlight) => (
+          {summary.highlights.map((highlight, index) => (
             <article key={highlight}>
-              <strong>{highlight.split(" ").slice(0, 4).join(" ")}</strong>
+              <strong>{executiveHighlightTitles[index] ?? "Executive Transformation Proof"}</strong>
               <p>{highlight}</p>
             </article>
           ))}
@@ -362,22 +360,6 @@ export default function ProfilePortal({
             ))}
           </aside>
         </div>
-      </section>
-
-      <section className={styles.roleGrid} aria-label="Target roles">
-        {summary.positioning.map((role) => (
-          <button
-            type="button"
-            key={role}
-            className={filters.role === role ? styles.activeRole : ""}
-            onClick={() => updateFilter("role", filters.role === role ? "" : role)}
-            title={`Filter by ${role}`}
-          >
-            <BriefcaseBusiness size={18} />
-            <strong>{role}</strong>
-            <span>{roleDescriptions[role]}</span>
-          </button>
-        ))}
       </section>
 
       <ExecutiveTree />
@@ -491,14 +473,14 @@ export default function ProfilePortal({
         </div>
       </section>
 
-      <section className={styles.videoSection} aria-label="Video overview">
-        <h2>Video Overview</h2>
+      <section className={styles.videoSection} aria-label="Sanat profile story">
+        <h2>Sanat&apos;s Profile Story</h2>
         <div className={styles.videoWrapper}>
           <iframe
             width="100%"
             height="100%"
             src="https://www.youtube.com/embed/D6mBZSFgveA"
-            title="Video Overview"
+            title="Sanat's Profile Story"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />

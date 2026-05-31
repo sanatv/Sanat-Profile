@@ -59,6 +59,34 @@
     rgba(4, 8, 24, 0.72);
 }
 
+.viewTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.8rem 0.8rem 0;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.viewTabs button {
+  min-height: 38px;
+  border: 1px solid rgba(163, 181, 255, 0.16);
+  border-radius: 8px;
+  padding: 0.52rem 0.78rem;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.viewTabs button:hover,
+.activeTab {
+  color: #fbfdff !important;
+  border-color: rgba(137, 161, 255, 0.78) !important;
+  background:
+    linear-gradient(135deg, rgba(62, 111, 255, 0.34), rgba(154, 94, 255, 0.28)),
+    rgba(255, 255, 255, 0.06) !important;
+}
+
 .toolbar {
   display: flex;
   align-items: center;
@@ -74,6 +102,16 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+}
+
+.relationships {
+  max-height: 92px;
+  overflow: auto;
+  padding-right: 0.15rem;
+}
+
+.zoomControls {
+  flex: 0 0 auto;
 }
 
 .relationships button,
@@ -121,10 +159,24 @@
   min-width: 820px;
   height: 620px;
   display: block;
+  touch-action: none;
+  user-select: none;
 }
 
 .graphPanel marker path {
   fill: rgba(184, 196, 255, 0.55);
+}
+
+.clusterLabel {
+  fill: rgba(214, 222, 255, 0.46);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-anchor: middle;
+  text-transform: uppercase;
+  paint-order: stroke;
+  stroke: rgba(4, 8, 24, 0.86);
+  stroke-width: 5px;
 }
 
 .edgeGroup {
@@ -158,8 +210,9 @@
 }
 
 .node {
-  cursor: pointer;
+  cursor: grab;
   outline: none;
+  touch-action: none;
   transition: opacity 0.18s ease;
 }
 
@@ -171,6 +224,15 @@
 .node:hover circle,
 .nodeSelected circle {
   stroke-width: 3;
+}
+
+.nodeDragging {
+  cursor: grabbing;
+}
+
+.nodeDragging circle {
+  stroke-width: 4;
+  filter: url("#nodeGlow");
 }
 
 .node text {
@@ -211,6 +273,11 @@
 .education circle {
   fill: #c49aff;
   stroke: #efd7ff;
+}
+
+.organization circle {
+  fill: #5661d9;
+  stroke: #c8d4ff;
 }
 
 .technology circle {
@@ -327,6 +394,10 @@
   background: #c49aff;
 }
 
+.legend .organization i {
+  background: #5661d9;
+}
+
 .legend .technology i {
   background: #7f9cff;
 }
@@ -361,6 +432,10 @@
   .toolbar {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .zoomControls {
+    flex: 1 1 auto;
   }
 
   .search {
