@@ -9,7 +9,6 @@ import {
   PROFILE_TAGS,
   PUBLIC_KNOWLEDGE_GRAPH_TRIPLES,
   PUBLIC_PROJECTS,
-  TARGET_ROLES,
 } from "@/lib/profile-data";
 
 export default function Home() {
@@ -18,7 +17,6 @@ export default function Home() {
       summary={EXECUTIVE_SUMMARY}
       projects={PUBLIC_PROJECTS}
       tags={PROFILE_TAGS}
-      roles={TARGET_ROLES}
       industries={INDUSTRIES}
       businessFunctions={BUSINESS_FUNCTIONS}
       graphTriples={PUBLIC_KNOWLEDGE_GRAPH_TRIPLES}

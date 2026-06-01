@@ -18,10 +18,10 @@ const mapData: NodeData = {
       id: 'summary',
       label: 'Professional Summary',
       children: [
-        { id: 'sum1', label: 'Data & AI Executive' },
+        { id: 'sum1', label: 'AI Enablement Engineering Director' },
         { id: 'sum2', label: '20+ Years Experience' },
-        { id: 'sum3', label: 'Enterprise Scale Transformation' },
-        { id: 'sum4', label: 'Global Team Leadership' }
+        { id: 'sum3', label: 'AI-Native Workflow Transformation' },
+        { id: 'sum4', label: 'Cross-Org Enablement' }
       ]
     },
     {
@@ -34,7 +34,16 @@ const mapData: NodeData = {
           children: [
             { id: 'genai', label: 'Generative AI & LLMs' },
             { id: 'agentic', label: 'Agentic AI' },
-            { id: 'predictive', label: 'Predictive Modeling' }
+            { id: 'blueprints', label: 'Reusable AI Blueprints' }
+          ]
+        },
+        {
+          id: 'enablement',
+          label: 'AI Enablement',
+          children: [
+            { id: 'devprod', label: 'Developer Productivity' },
+            { id: 'workflows', label: 'AI-Native Workflows' },
+            { id: 'adoption', label: 'Adoption Roadmaps' }
           ]
         },
         {
@@ -153,13 +162,13 @@ const mapData: NodeData = {
       ]
     },
     {
-      id: 'clients',
-      label: 'Notable Clients',
+      id: 'industries',
+      label: 'Industry Contexts',
       children: [
-        { id: 'cl1', label: 'NVIDIA' },
-        { id: 'cl2', label: 'J&J' },
-        { id: 'cl3', label: 'Kraft Foods' },
-        { id: 'cl4', label: 'General Motors' }
+        { id: 'ind1', label: 'Semiconductor / Technology' },
+        { id: 'ind2', label: 'Financial Analytics' },
+        { id: 'ind3', label: 'CPG / Manufacturing' },
+        { id: 'ind4', label: 'Automotive / Enterprise Systems' }
       ]
     }
   ]
@@ -201,8 +210,8 @@ export default function MindMap() {
   return (
     <div className={`glass-panel ${styles.mindMapContainer}`}>
       <div className={styles.header}>
-        <h3 className="text-gradient">Interactive Interactive Mind Map</h3>
-        <p className={styles.subtitle}>Explore the NotebookLM-style structure of my profile</p>
+        <h3 className="text-gradient">AI Enablement Mind Map</h3>
+        <p className={styles.subtitle}>Explore the AI-native structure of my profile</p>
       </div>
       <div className={styles.mapCanvas}>
         <MapNode node={mapData} isRoot={true} />

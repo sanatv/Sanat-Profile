@@ -70,7 +70,7 @@ export default function ChatInterface() {
       <div className={styles.chatHeader}>
         <div>
           <h2 className="text-gradient">AI Recruiter Assistant</h2>
-          <p className={styles.subtitle}>Ask me anything about Sanat&apos;s profile</p>
+          <p className={styles.subtitle}>Ask about Sanat&apos;s AI enablement profile</p>
         </div>
       </div>
       
@@ -79,7 +79,7 @@ export default function ChatInterface() {
           <div className={styles.emptyState}>
             <Bot size={48} className={styles.emptyIcon} />
             <p>Hi! I&apos;m Sanat&apos;s AI Assistant.</p>
-            <p style={{marginTop: '8px', fontSize: '0.9rem'}}>Try asking: &quot;What is his AI transformation experience?&quot;</p>
+            <p style={{marginTop: '8px', fontSize: '0.9rem'}}>Try asking: &quot;How has he enabled agentic AI adoption?&quot;</p>
           </div>
         )}
         
@@ -108,7 +108,7 @@ export default function ChatInterface() {
         <input
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          placeholder="e.g. Tell me about his AI transformation experience..."
+          placeholder="e.g. How does he fit AI enablement leadership?"
           className={styles.input}
           disabled={isLoading}
         />

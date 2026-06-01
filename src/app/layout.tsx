@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Sanat Vats | Enterprise Data, AI & Cloud Transformation Leader",
+  title: "Sanat Vats | AI Enablement Engineering Director",
   description:
-    "Executive profile portal for enterprise data, AI, cloud, MDM, SAP/S4, FP&A, and governance transformation leadership.",
+    "Executive profile portal for AI enablement, agentic AI, AI-native workflows, developer productivity, trusted data foundations, and cross-organizational transformation leadership.",
 };
 
 export default function RootLayout({

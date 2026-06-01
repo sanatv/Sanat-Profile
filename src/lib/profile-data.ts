@@ -180,24 +180,24 @@ export const EXECUTIVE_SUMMARY = {
   location: "Evanston, IL",
   linkedin: "https://www.linkedin.com/in/sanat/",
   github: "https://github.com/sanatv",
-  headline: "Enterprise Data, AI & Cloud Transformation Leader",
+  headline: "AI Enablement Engineering Director | Agentic AI & Enterprise Productivity",
   subheadline:
-    "Helping enterprises become AI-ready and AI-enabled through trusted data foundations, GenAI, Agentic AI, cloud platforms, MDM, SAP/S4, FP&A modernization, and enterprise governance.",
+    "Mission-driven AI leader enabling AI-native workflows across engineering, product, finance, data, and enterprise operations through GenAI, agentic systems, reusable blueprints, trusted data foundations, and cross-organizational execution.",
   positioning: [
     "Consulting Partner / PPMD Track",
     "AI-enabled FP&A / CFO Systems Leader",
     "CDO / Head of Data & AI",
   ],
   metrics: [
-    { label: "Years of transformation experience", value: "20+" },
-    { label: "Enterprise case studies", value: `${PROJECTS.length}` },
-    { label: "Core target leadership lanes", value: "3" },
+    { label: "Years leading technology transformation", value: "20+" },
+    { label: "AI, data, and platform case studies", value: `${PROJECTS.length}` },
+    { label: "Enablement themes: agentic AI, AI-ready data, adoption", value: "3" },
   ],
   highlights: [
-    "Enterprise transformation leader with deep experience across data strategy, cloud platforms, master data, governance, SAP/S4, and CFO systems modernization.",
-    "Bridges executive advisory and hands-on AI product building, including GenAI, agentic workflows, ML models, Python, React, Databricks, and graph-based analysis.",
-    "Builds trusted, AI-ready data foundations that improve reporting confidence, planning speed, finance traceability, operating model clarity, and executive decision support.",
-    "Known for translating complex business processes into scalable architectures across finance, supply chain, manufacturing, regulatory, and technology environments.",
+    "Builds AI enablement roadmaps that connect industry insight, frontier and open-source AI patterns, agentic workflows, and enterprise adoption into pragmatic execution plans.",
+    "Develops hands-on AI products, prototypes, and reusable blueprints with Python, React, OpenAI, Gemini, ML, graph analysis, and cloud data platforms.",
+    "Accelerates productivity by translating complex engineering and business workflows into AI-ready data foundations, automation patterns, decision intelligence, and governed operating models.",
+    "Leads cross-organizational stakeholders through fast-moving transformation across product, finance, supply chain, manufacturing, regulatory, and technology environments.",
   ],
 };
 
@@ -408,6 +408,7 @@ export function buildChatContext(query = "") {
     intents,
     safetyNotes: [
       "Do not name client or asset names. Refer to work by industry, business context, or transformation type.",
+      "Frame answers around AI enablement, agentic AI adoption, reusable blueprints, developer productivity, and AI-ready enterprise data when supported by the evidence.",
       "Do not overstate advisory, prototype, or demo work as production ownership.",
       "Use careful wording such as AI-ready, AI-assisted analysis, demo product, or prototype where appropriate.",
       "Do not claim full program budget ownership unless the provided context explicitly says so.",

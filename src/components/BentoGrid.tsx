@@ -6,15 +6,15 @@ import MindMap from './MindMap';
 
 export default function BentoGrid() {
   const metrics = [
-    { label: 'Years Exp', value: '20+' },
-    { label: 'Value Generated', value: '$20M+' },
-    { label: 'Team Size', value: '25+' },
+    { label: 'Years Leading Transformation', value: '20+' },
+    { label: 'AI Enablement Focus', value: 'Agentic' },
+    { label: 'Profile Direction', value: 'AI Native' },
   ];
 
   const skills = [
-    'Gen AI / Agentic AI', 'Data Products', 'Databricks', 'Azure & GCP',
-    'Data Governance', 'MDM', 'SAP MDG', 'Oracle ERP', 
-    'FP&A', 'EPM', 'SCM', 'Python', 'Machine Learning'
+    'GenAI / Agentic AI', 'AI Enablement', 'AI-Native Workflows', 'Developer Productivity',
+    'Reusable Blueprints', 'Data Products', 'Databricks', 'Azure & GCP',
+    'Data Governance', 'MDM', 'SAP MDG', 'Python', 'Machine Learning'
   ];
 
   return (
@@ -23,7 +23,7 @@ export default function BentoGrid() {
       <div className={`glass-panel ${styles.card} ${styles.profileCard}`}>
         <div className={styles.avatarPlaceholder}>SV</div>
         <h2>Sanat Vats</h2>
-        <p className={styles.role}>Data & AI Executive</p>
+        <p className={styles.role}>AI Enablement Engineering Director</p>
         <div className={styles.contactInfo}>
           <span><MapPin size={16} /> Evanston, IL</span>
           <span><Mail size={16} /> sanatv@gmail.com</span>

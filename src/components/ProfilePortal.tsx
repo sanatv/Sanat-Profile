@@ -55,7 +55,6 @@ type PortalProps = {
   summary: ExecutiveSummary;
   projects: NormalizedProject[];
   tags: ProfileDataset["tags"];
-  roles: string[];
   industries: string[];
   businessFunctions: string[];
   graphTriples: KnowledgeGraphTriple[];
@@ -66,7 +65,6 @@ type PortalProps = {
 
 type Filters = {
   query: string;
-  role: string;
   capability: string;
   technology: string;
   industry: string;
@@ -75,7 +73,6 @@ type Filters = {
 
 const emptyFilters: Filters = {
   query: "",
-  role: "",
   capability: "",
   technology: "",
   industry: "",
@@ -83,10 +80,10 @@ const emptyFilters: Filters = {
 };
 
 const executiveHighlightTitles = [
-  "Enterprise Transformation Leadership",
-  "Executive Advisory with Hands-On AI Delivery",
-  "Trusted AI-Ready Data Foundations",
-  "Scalable Business Architecture Across Functions",
+  "AI Enablement Roadmap Leadership",
+  "Agentic AI Product Building",
+  "Productivity Tools and Blueprints",
+  "Cross-Organization Execution at Speed",
 ];
 
 const sectionLinks = [
@@ -105,24 +102,6 @@ const sectionLinks = [
 
 const matches = (value: string, selected: string) =>
   !selected || value.toLowerCase().includes(selected.toLowerCase()) || selected.toLowerCase().includes(value.toLowerCase());
-
-const roleAliases: Record<string, string[]> = {
-  "Consulting Partner / PPMD Track": ["ppmd", "consulting", "solution architect", "enterprise data"],
-  "AI-enabled FP&A / CFO Systems Leader": ["fp&a", "cfo", "finance", "epm"],
-  "CDO / Head of Data & AI": ["cdo", "data", "governance", "mdm", "cloud"],
-};
-
-const projectMatchesRole = (project: NormalizedProject, selectedRole: string) => {
-  if (!selectedRole) return true;
-  const aliases = roleAliases[selectedRole] ?? [selectedRole];
-  const haystack = [
-    ...project.targetRoles,
-    project.role,
-    project.name,
-  ].join(" ").toLowerCase();
-
-  return aliases.some((alias) => haystack.includes(alias.toLowerCase())) || project.targetRoles.some((role) => matches(role, selectedRole));
-};
 
 const projectContains = (project: NormalizedProject, query: string) => {
   if (!query.trim()) return true;
@@ -183,7 +162,6 @@ export default function ProfilePortal({
   summary,
   projects,
   tags,
-  roles,
   industries,
   businessFunctions,
   graphTriples,
@@ -205,7 +183,6 @@ export default function ProfilePortal({
   const filteredProjects = useMemo(
     () =>
       projects.filter((project) => {
-        const roleMatch = projectMatchesRole(project, filters.role);
         const capabilityMatch =
           !filters.capability ||
           [...project.capabilities, ...project.tags].some((capability) => matches(capability, filters.capability));
@@ -218,7 +195,6 @@ export default function ProfilePortal({
 
         return (
           projectContains(project, filters.query) &&
-          roleMatch &&
           capabilityMatch &&
           technologyMatch &&
           industryMatch &&
@@ -299,7 +275,7 @@ export default function ProfilePortal({
       <section className={styles.executiveSummary} aria-label="Executive summary">
         <div>
           <p className={styles.eyebrow}>Executive Summary</p>
-          <h2>Transformation leader for AI-ready data, CFO systems, and enterprise governance</h2>
+          <h2>AI enablement leader for agentic development, AI-native workflows, and enterprise productivity</h2>
         </div>
         <div className={styles.summaryGrid}>
           {summary.highlights.map((highlight, index) => (
@@ -318,7 +294,7 @@ export default function ProfilePortal({
               <BriefcaseBusiness size={16} />
               Historical Experience & Education
             </p>
-            <h2>Career foundation behind the transformation portfolio</h2>
+            <h2>Career foundation for AI enablement, product acceleration, and enterprise transformation</h2>
           </div>
         </div>
 
@@ -371,7 +347,7 @@ export default function ProfilePortal({
               <Layers3 size={16} />
               Flagship Case Studies
             </p>
-            <h2>Enterprise programs and AI product assets from the dataset</h2>
+            <h2>AI enablement, data platform, and productivity proof from the dataset</h2>
           </div>
         </div>
         <div className={styles.featureGrid}>
@@ -388,7 +364,7 @@ export default function ProfilePortal({
               <Filter size={16} />
               Project Library
             </p>
-            <h2>Filter by role, capability, technology, industry, and function</h2>
+            <h2>Filter role-relevant proof by AI capability, platform, industry, and function</h2>
           </div>
           <button type="button" onClick={() => setFilters(emptyFilters)} title="Clear all filters">
             <X size={16} />
@@ -408,7 +384,6 @@ export default function ProfilePortal({
               />
             </div>
           </label>
-          <FilterSelect label="Target role" value={filters.role} options={roles} onChange={(value) => updateFilter("role", value)} />
           <FilterSelect
             label="Capability"
             value={filters.capability}
@@ -443,13 +418,13 @@ export default function ProfilePortal({
         </div>
       </section>
 
-      <ProofSection id="ai-portfolio" title="AI & Agentic AI Portfolio" projects={aiProjects} onOpen={setSelectedProject} />
-      <ProofSection id="finance" title="Finance / FP&A / CFO Transformation" projects={financeProjects} onOpen={setSelectedProject} />
-      <ProofSection id="governance" title="Data Governance / MDM / CDO Agenda" projects={governanceProjects} onOpen={setSelectedProject} />
-      <ProofSection id="sap" title="SAP / S4 / Supply Chain Data" projects={sapProjects} onOpen={setSelectedProject} />
+      <ProofSection id="ai-portfolio" title="AI Enablement & Agentic Development Portfolio" projects={aiProjects} onOpen={setSelectedProject} />
+      <ProofSection id="finance" title="AI-Ready Finance & Enterprise Productivity" projects={financeProjects} onOpen={setSelectedProject} />
+      <ProofSection id="governance" title="Trusted Data Foundations / AI-Ready Platforms" projects={governanceProjects} onOpen={setSelectedProject} />
+      <ProofSection id="sap" title="Product & Supply Chain Data for Engineering Workflows" projects={sapProjects} onOpen={setSelectedProject} />
       <ProofSection
         id="consulting"
-        title="Consulting Leadership / Practice Development"
+        title="Cross-Org Enablement / Stakeholder Leadership"
         projects={consultingProjects}
         onOpen={setSelectedProject}
       />
@@ -462,10 +437,10 @@ export default function ProfilePortal({
             <Bot size={16} />
             Ask My Profile
           </p>
-          <h2>Recruiter chatbot grounded in the profile dataset</h2>
+          <h2>Recruiter chatbot grounded in the AI enablement profile</h2>
           <p>
-            Ask about AI experience, SAP/S4 work, FP&A transformations, MDM, cloud data platforms, industry exposure, or
-            specific case studies.
+            Ask about agentic AI, AI-native workflow transformation, developer productivity patterns, AI-ready data
+            foundations, cross-org leadership, or specific case studies.
           </p>
         </div>
         <div className={styles.chatShell}>
@@ -510,8 +485,11 @@ export default function ProfilePortal({
                 <p>{selectedProject.outcomes}</p>
               </div>
               <div>
-                <h3>Role Alignment</h3>
-                <p>{selectedProject.targetRoles.join(", ")}</p>
+                <h3>AI Enablement Relevance</h3>
+                <p>
+                  Connects platform thinking, workflow modernization, stakeholder adoption, and reusable delivery
+                  patterns for AI-native transformation.
+                </p>
               </div>
             </div>
             <div className={styles.detailTags}>
