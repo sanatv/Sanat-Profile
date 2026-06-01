@@ -443,9 +443,9 @@ export default function KnowledgeGraph({ triples, projects }: KnowledgeGraphProp
         <div>
           <p className={styles.eyebrow}>
             <Network size={16} />
-            D3.js Knowledge Graph
+            Career Ontology Graph
           </p>
-          <h2>Explore a force-directed network across career, education, projects, AI capabilities, platforms, and outcomes</h2>
+          <h2>Sanat&apos;s Career Ontology: A semantic representation of transformation leadership, platforms, and AI outcomes</h2>
         </div>
         <label className={styles.search}>
           <Search size={16} />
