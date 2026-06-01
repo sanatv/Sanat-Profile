@@ -1,7 +1,19 @@
 "use client";
 
 import type { PointerEvent } from "react";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  forceCenter,
+  forceCollide,
+  forceLink,
+  forceManyBody,
+  forceSimulation,
+  forceX,
+  forceY,
+  type Simulation,
+  type SimulationLinkDatum,
+  type SimulationNodeDatum,
+} from "d3";
 import { Maximize2, Move, Network, RotateCcw, Search, ZoomIn, ZoomOut } from "lucide-react";
 import type { KnowledgeGraphTriple, NormalizedProject } from "@/lib/profile-data";
 import styles from "./KnowledgeGraph.module.css";
@@ -15,12 +27,17 @@ type GraphNode = {
   type: GraphType;
   x: number;
   y: number;
+  anchorX: number;
+  anchorY: number;
   degree: number;
 };
 
 type GraphEdge = KnowledgeGraphTriple & {
   id: string;
 };
+
+type SimNode = GraphNode & SimulationNodeDatum;
+type SimEdge = GraphEdge & SimulationLinkDatum<SimNode>;
 
 const graphWidth = 1080;
 const graphHeight = 660;
@@ -74,6 +91,7 @@ const nodeRadius: Record<GraphType, number> = {
 const typeOrder: GraphType[] = ["person", "experience", "education", "project", "capability", "technology", "outcome", "organization"];
 
 const truncate = (value: string, max = 30) => (value.length > max ? `${value.slice(0, max - 1)}...` : value);
+const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 
 const classifyNode = (label: string): GraphType => {
   const normalized = label.toLowerCase();
@@ -179,6 +197,21 @@ const defaultAnchorFor = (node: Pick<GraphNode, "type" | "id">, index: number, c
   };
 };
 
+const linkDistanceFor = (edge: GraphEdge) => {
+  if (edge.subject === "Sanat" || edge.object === "Sanat") return 148;
+  if (edge.relationship === "uses") return 124;
+  if (edge.relationship === "demonstrates") return 134;
+  if (edge.relationship === "supports") return 154;
+  return 118;
+};
+
+const toRenderableNodes = (nodes: SimNode[]): GraphNode[] =>
+  nodes.map((node) => ({
+    ...node,
+    x: Math.round(clamp(node.x ?? node.anchorX, 48, graphWidth - 48)),
+    y: Math.round(clamp(node.y ?? node.anchorY, 48, graphHeight - 48)),
+  }));
+
 type KnowledgeGraphProps = {
   triples: KnowledgeGraphTriple[];
   projects: NormalizedProject[];
@@ -186,6 +219,8 @@ type KnowledgeGraphProps = {
 
 export default function KnowledgeGraph({ triples, projects }: KnowledgeGraphProps) {
   const svgRef = useRef<SVGSVGElement | null>(null);
+  const simulationRef = useRef<Simulation<SimNode, SimEdge> | null>(null);
+  const liveNodesRef = useRef<SimNode[]>([]);
   const [query, setQuery] = useState("");
   const [view, setView] = useState<GraphView>("integrated");
   const [selectedRelationship, setSelectedRelationship] = useState("all");
@@ -193,6 +228,7 @@ export default function KnowledgeGraph({ triples, projects }: KnowledgeGraphProp
   const [hoveredNodeId, setHoveredNodeId] = useState<string | null>(null);
   const [zoom, setZoom] = useState(1);
   const [movedNodes, setMovedNodes] = useState<Record<string, { x: number; y: number }>>({});
+  const [simulatedNodes, setSimulatedNodes] = useState<GraphNode[]>([]);
   const [draggingNodeId, setDraggingNodeId] = useState<string | null>(null);
 
   const relationships = useMemo(() => {
@@ -240,13 +276,14 @@ export default function KnowledgeGraph({ triples, projects }: KnowledgeGraphProp
     const nodes = typeOrder.flatMap((type) =>
       labelsByType[type].map((label, index) => {
         const anchor = defaultAnchorFor({ id: label, type }, index, labelsByType[type].length, view);
-        const customPosition = movedNodes[label];
         return {
           id: label,
           label,
           type,
-          x: customPosition?.x ?? anchor.x,
-          y: customPosition?.y ?? anchor.y,
+          x: anchor.x,
+          y: anchor.y,
+          anchorX: anchor.x,
+          anchorY: anchor.y,
           degree: degreeByLabel[label] ?? 0,
         };
       }),
@@ -256,9 +293,59 @@ export default function KnowledgeGraph({ triples, projects }: KnowledgeGraphProp
     const edges = visibleEdges.filter((edge) => nodeIds.has(edge.subject) && nodeIds.has(edge.object));
 
     return { nodes, edges, allEdges: filteredEdges };
-  }, [movedNodes, query, selectedNodeId, selectedRelationship, triples, view]);
+  }, [query, selectedNodeId, selectedRelationship, triples, view]);
 
-  const selectedNode = graph.nodes.find((node) => node.id === selectedNodeId) ?? graph.nodes.find((node) => node.id === "Sanat");
+  useEffect(() => {
+    const nodes: SimNode[] = graph.nodes.map((node) => {
+      const moved = movedNodes[node.id];
+      return {
+        ...node,
+        x: moved?.x ?? node.x,
+        y: moved?.y ?? node.y,
+        fx: moved?.x ?? null,
+        fy: moved?.y ?? null,
+      };
+    });
+    const links: SimEdge[] = graph.edges.map((edge) => ({
+      ...edge,
+      source: edge.subject,
+      target: edge.object,
+    }));
+
+    liveNodesRef.current = nodes;
+    simulationRef.current?.stop();
+
+    const simulation = forceSimulation<SimNode>(nodes)
+      .force("link", forceLink<SimNode, SimEdge>(links).id((node) => node.id).distance(linkDistanceFor).strength(0.56))
+      .force("charge", forceManyBody<SimNode>().strength(view === "integrated" ? -430 : -360))
+      .force("collide", forceCollide<SimNode>((node) => nodeRadius[node.type] + Math.min(node.degree, 6) + 18).iterations(2))
+      .force("x", forceX<SimNode>((node) => node.anchorX).strength(view === "integrated" ? 0.1 : 0.13))
+      .force("y", forceY<SimNode>((node) => node.anchorY).strength(view === "integrated" ? 0.1 : 0.13))
+      .force("center", forceCenter(center.x, center.y))
+      .alpha(0.92)
+      .alphaDecay(0.055)
+      .velocityDecay(0.42);
+
+    let frame = 0;
+    simulation.on("tick", () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        setSimulatedNodes(toRenderableNodes(nodes));
+      });
+    });
+
+    simulationRef.current = simulation;
+
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      simulation.stop();
+    };
+  }, [graph.edges, graph.nodes, movedNodes, view]);
+
+  const activeNodes = simulatedNodes.length ? simulatedNodes : graph.nodes;
+  const nodeById = useMemo(() => new Map(activeNodes.map((node) => [node.id, node])), [activeNodes]);
+  const selectedNode = nodeById.get(selectedNodeId) ?? nodeById.get("Sanat");
   const activeNodeId = hoveredNodeId ?? selectedNode?.id ?? null;
   const connectedNodeIds = useMemo(() => {
     if (!activeNodeId) return new Set<string>();
@@ -299,29 +386,55 @@ export default function KnowledgeGraph({ triples, projects }: KnowledgeGraphProp
     setDraggingNodeId(nodeId);
     setSelectedNodeId(nodeId);
     event.currentTarget.setPointerCapture(event.pointerId);
+
+    const node = liveNodesRef.current.find((item) => item.id === nodeId);
+    if (node) {
+      node.fx = node.x;
+      node.fy = node.y;
+      simulationRef.current?.alphaTarget(0.26).restart();
+    }
   };
 
   const moveDrag = (event: PointerEvent<SVGSVGElement>) => {
     if (!draggingNodeId) return;
     const point = eventToGraphPoint(event);
     if (!point) return;
-    setMovedNodes((current) => ({
-      ...current,
-      [draggingNodeId]: {
-        x: Math.max(48, Math.min(graphWidth - 48, Math.round(point.x))),
-        y: Math.max(48, Math.min(graphHeight - 48, Math.round(point.y))),
-      },
-    }));
+    const node = liveNodesRef.current.find((item) => item.id === draggingNodeId);
+    if (!node) return;
+
+    node.fx = clamp(point.x, 48, graphWidth - 48);
+    node.fy = clamp(point.y, 48, graphHeight - 48);
+    node.x = node.fx;
+    node.y = node.fy;
+    setSimulatedNodes(toRenderableNodes(liveNodesRef.current));
   };
 
   const endDrag = () => {
+    if (draggingNodeId) {
+      const node = liveNodesRef.current.find((item) => item.id === draggingNodeId);
+      if (node) {
+        const x = Math.round(clamp(node.x ?? node.anchorX, 48, graphWidth - 48));
+        const y = Math.round(clamp(node.y ?? node.anchorY, 48, graphHeight - 48));
+        node.fx = x;
+        node.fy = y;
+        setMovedNodes((current) => ({ ...current, [draggingNodeId]: { x, y } }));
+      }
+    }
     setDraggingNodeId(null);
+    simulationRef.current?.alphaTarget(0.04).restart();
+  };
+
+  const resetLayout = () => {
+    setDraggingNodeId(null);
+    setMovedNodes({});
+    simulationRef.current?.alpha(0.9).restart();
   };
 
   const selectView = (nextView: GraphView) => {
     setView(nextView);
     setSelectedRelationship("all");
     setSelectedNodeId("Sanat");
+    setMovedNodes({});
   };
 
   return (
@@ -330,9 +443,9 @@ export default function KnowledgeGraph({ triples, projects }: KnowledgeGraphProp
         <div>
           <p className={styles.eyebrow}>
             <Network size={16} />
-            Integrated Knowledge Graph
+            D3.js Knowledge Graph
           </p>
-          <h2>Move, filter, and inspect the connected story across career, education, projects, capabilities, and outcomes</h2>
+          <h2>Explore a force-directed network across career, education, projects, AI capabilities, platforms, and outcomes</h2>
         </div>
         <label className={styles.search}>
           <Search size={16} />
@@ -383,7 +496,7 @@ export default function KnowledgeGraph({ triples, projects }: KnowledgeGraphProp
             <button type="button" onClick={() => setZoom(1)} title="Reset zoom">
               <RotateCcw size={16} />
             </button>
-            <button type="button" onClick={() => setMovedNodes({})} title="Reset node layout">
+            <button type="button" onClick={resetLayout} title="Reset D3 layout">
               <Move size={16} />
               Reset layout
             </button>
@@ -396,7 +509,7 @@ export default function KnowledgeGraph({ triples, projects }: KnowledgeGraphProp
               ref={svgRef}
               viewBox={`0 0 ${graphWidth} ${graphHeight}`}
               role="img"
-              aria-label="Draggable integrated profile knowledge graph"
+              aria-label="D3 force-directed draggable profile knowledge graph"
               onPointerMove={moveDrag}
               onPointerUp={endDrag}
               onPointerCancel={endDrag}
@@ -423,8 +536,8 @@ export default function KnowledgeGraph({ triples, projects }: KnowledgeGraphProp
                 ))}
 
                 {graph.edges.map((edge) => {
-                  const source = graph.nodes.find((node) => node.id === edge.subject);
-                  const target = graph.nodes.find((node) => node.id === edge.object);
+                  const source = nodeById.get(edge.subject);
+                  const target = nodeById.get(edge.object);
                   if (!source || !target) return null;
                   const focused = edgeIsFocused(edge);
 
@@ -445,7 +558,7 @@ export default function KnowledgeGraph({ triples, projects }: KnowledgeGraphProp
                   );
                 })}
 
-                {graph.nodes.map((node) => {
+                {activeNodes.map((node) => {
                   const focused = isFocused(node.id);
                   const selected = selectedNode?.id === node.id;
                   const dragged = draggingNodeId === node.id;
@@ -484,8 +597,8 @@ export default function KnowledgeGraph({ triples, projects }: KnowledgeGraphProp
               <p className={styles.inspectorEyebrow}>{selectedNode?.type ?? "node"}</p>
               <h3>{selectedNode?.label ?? "Select a node"}</h3>
               <p>
-                {selectedEdges.length} relationship{selectedEdges.length === 1 ? "" : "s"} in this view. Drag nodes to arrange the
-                graph, or use tabs for a cleaner slice.
+                {selectedEdges.length} relationship{selectedEdges.length === 1 ? "" : "s"} in this view. D3 keeps related
+                nodes together while you drag individual nodes into place.
               </p>
             </div>
 
