@@ -33,6 +33,11 @@ html, body {
   scroll-behavior: smooth;
 }
 
+/* Ensure sticky header does not overlap scrolled sections */
+[id] {
+  scroll-margin-top: 5.5rem;
+}
+
 a {
   color: inherit;
   text-decoration: none;

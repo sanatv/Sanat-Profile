@@ -463,6 +463,11 @@ export default function ProfilePortal({
         <p>Generated with help of AI.</p>
       </section>
 
+      <footer className={styles.footer}>
+        <p>© {new Date().getFullYear()} Sanat Vats. AI Enablement Engineering Director.</p>
+        <p>Grounded in enterprise data strategy, agentic blueprints, and trusted foundations.</p>
+      </footer>
+
       {selectedProject && (
         <div className={styles.modalBackdrop} role="presentation" onClick={() => setSelectedProject(null)}>
           <article className={styles.modal} role="dialog" aria-modal="true" aria-label={`${selectedProject.industry} case study`}>
