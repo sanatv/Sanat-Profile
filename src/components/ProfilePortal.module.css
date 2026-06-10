@@ -609,6 +609,57 @@
   font-size: 0.78rem;
 }
 
+.toolchainGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.toolchainCard {
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+  padding: 1rem;
+  display: grid;
+  align-content: start;
+  gap: 0.6rem;
+}
+
+.toolchainCard h3 {
+  font-size: 1.02rem;
+}
+
+.toolchainCard > p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.toolchainCard ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.toolchainCard li {
+  display: grid;
+  gap: 0.15rem;
+  border-left: 2px solid rgba(145, 169, 255, 0.45);
+  padding-left: 0.6rem;
+}
+
+.toolchainCard li strong {
+  font-size: 0.9rem;
+}
+
+.toolchainCard li span {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
 .footer {
   border-top: 1px solid var(--panel-border);
   padding: 4rem 1.25rem 24rem; /* Generous bottom padding acts as a runway for bottom scroll anchors */
@@ -629,7 +680,8 @@
   .summaryGrid,
   .projectGrid,
   .filters,
-  .proofGrid {
+  .proofGrid,
+  .toolchainGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -649,6 +701,7 @@
   .projectGrid,
   .filters,
   .proofGrid,
+  .toolchainGrid,
   .detailGrid {
     grid-template-columns: 1fr;
   }

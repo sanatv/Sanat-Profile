@@ -15,6 +15,7 @@ import {
   MapPin,
   Search,
   Sparkles,
+  Wrench,
   X,
 } from "lucide-react";
 import ChatInterface from "@/components/ChatInterface";
@@ -22,6 +23,7 @@ import ExecutiveTree from "@/components/ExecutiveTree";
 import KnowledgeGraph from "@/components/KnowledgeGraph";
 import ProjectCard from "@/components/ProjectCard";
 import type { KnowledgeGraphTriple, NormalizedProject, ProfileDataset } from "@/lib/profile-data";
+import { AI_TOOLCHAIN } from "@/lib/toolchain-data";
 import styles from "./ProfilePortal.module.css";
 
 type ExecutiveSummary = {
@@ -92,6 +94,7 @@ const sectionLinks = [
   ["case-studies", "Case Studies"],
   ["architecture-tree", "Tree"],
   ["ai-portfolio", "AI Portfolio"],
+  ["toolchain", "Toolchain"],
   ["finance", "Finance"],
   ["governance", "Governance"],
   ["sap", "SAP/S4"],
@@ -419,6 +422,35 @@ export default function ProfilePortal({
       </section>
 
       <ProofSection id="ai-portfolio" title="AI Enablement & Agentic Development Portfolio" projects={aiProjects} onOpen={setSelectedProject} />
+
+      <section id="toolchain" className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <div>
+            <p className={styles.eyebrow}>
+              <Wrench size={16} />
+              AI-Native Toolchain
+            </p>
+            <h2>Agentic coding agents, MCP and FastAPI infrastructure, and frontier model platforms used daily</h2>
+          </div>
+        </div>
+        <div className={styles.toolchainGrid}>
+          {AI_TOOLCHAIN.map((group) => (
+            <article key={group.category} className={styles.toolchainCard}>
+              <h3>{group.category}</h3>
+              <p>{group.description}</p>
+              <ul>
+                {group.tools.map((tool) => (
+                  <li key={tool.name}>
+                    <strong>{tool.name}</strong>
+                    <span>{tool.detail}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <ProofSection id="finance" title="AI-Ready Finance & Enterprise Productivity" projects={financeProjects} onOpen={setSelectedProject} />
       <ProofSection id="governance" title="Trusted Data Foundations / AI-Ready Platforms" projects={governanceProjects} onOpen={setSelectedProject} />
       <ProofSection id="sap" title="Product & Supply Chain Data for Engineering Workflows" projects={sapProjects} onOpen={setSelectedProject} />
