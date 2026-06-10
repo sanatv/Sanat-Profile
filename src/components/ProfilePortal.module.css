@@ -660,6 +660,70 @@
   line-height: 1.4;
 }
 
+.functionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.functionCard {
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+  padding: 1rem;
+  display: grid;
+  align-content: start;
+  gap: 0.55rem;
+}
+
+.functionCard h3 {
+  font-size: 1.02rem;
+}
+
+.functionCard h4 {
+  margin-top: 0.2rem;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.functionCard > p {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.functionCard ul {
+  margin: 0;
+  padding-left: 1.05rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.functionCard li {
+  color: var(--text-secondary);
+  font-size: 0.83rem;
+  line-height: 1.4;
+}
+
+.platformTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.3rem;
+}
+
+.platformTags span {
+  border-radius: 999px;
+  padding: 0.3rem 0.6rem;
+  color: #d8dfff;
+  border: 1px solid rgba(145, 169, 255, 0.28);
+  background: rgba(92, 111, 255, 0.1);
+  font-size: 0.74rem;
+}
+
 .footer {
   border-top: 1px solid var(--panel-border);
   padding: 4rem 1.25rem 24rem; /* Generous bottom padding acts as a runway for bottom scroll anchors */
@@ -681,7 +745,8 @@
   .projectGrid,
   .filters,
   .proofGrid,
-  .toolchainGrid {
+  .toolchainGrid,
+  .functionGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -702,6 +767,7 @@
   .filters,
   .proofGrid,
   .toolchainGrid,
+  .functionGrid,
   .detailGrid {
     grid-template-columns: 1fr;
   }

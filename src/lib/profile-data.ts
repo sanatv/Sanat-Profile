@@ -108,9 +108,11 @@ const publicProjectLabel = (industry: string) => {
 };
 
 const functionRules: Array<[string, string[]]> = [
-  ["Finance / FP&A / CFO", ["finance", "fp&a", "cfo", "planning", "forecast", "aop", "consolidation", "revenue"]],
+  ["Finance / FP&A / EPM", ["finance", "fp&a", "cfo", "planning", "forecast", "aop", "consolidation", "revenue", "epm", "variance"]],
+  ["Supply Chain / Operations", ["bom", "supply chain", "material master", "production version", "plant", "planning master data", "plm"]],
+  ["CRM / Customer & Commerce", ["salesforce", "sfdc", "zuora", "demandware", "loyalty", "campaign", "fulfillment", "contact management", "account management", "financeforce", "quote-to-cash", "billing", "crm"]],
   ["Data Governance / MDM", ["governance", "mdm", "master data", "hierarchy", "dictionary", "data quality"]],
-  ["SAP / S4 / Supply Chain", ["sap", "s/4", "bom", "supply chain", "material", "production version", "plant"]],
+  ["SAP / S4", ["sap", "s/4", "cfin"]],
   ["AI / Agentic AI", ["genai", "agentic", "llm", "ai ", "ml", "machine learning", "xgboost", "random forest"]],
   ["Cloud / Data Platforms", ["azure", "gcp", "databricks", "data lake", "postgresql", "sqlite"]],
   ["Consulting / Practice Development", ["stakeholder", "advisory", "solution architect", "transformation", "demo", "accelerator"]],
@@ -185,24 +187,25 @@ export const EXECUTIVE_SUMMARY = {
   location: "Evanston, IL",
   linkedin: "https://www.linkedin.com/in/sanat/",
   github: "https://github.com/sanatv",
-  headline: "AI Enablement Engineering Director | Agentic AI & Enterprise Productivity",
+  headline: "Enterprise Transformation Leader | Finance, Supply Chain & CRM, AI-Enabled",
   subheadline:
-    "Mission-driven AI leader enabling AI-native workflows across engineering, product, finance, data, and enterprise operations through GenAI, agentic systems, reusable blueprints, trusted data foundations, and cross-organizational execution.",
+    "20+ year enterprise transformation leader across CPG, technology, and automotive — modernizing finance, supply chain, and customer/CRM systems with trusted data foundations, EPM and ERP platforms, and pragmatic, AI-enabled delivery.",
   positioning: [
-    "Consulting Partner / PPMD Track",
-    "AI-enabled FP&A / CFO Systems Leader",
-    "CDO / Head of Data & AI",
+    "Enterprise Transformation Leader",
+    "Finance / FP&A & EPM Systems",
+    "Supply Chain & Customer / CRM Data",
+    "AI-Enabled Delivery",
   ],
   metrics: [
-    { label: "Years leading technology transformation", value: "20+" },
-    { label: "AI, data, and platform case studies", value: `${PROJECTS.length}` },
-    { label: "Enablement themes: agentic AI, AI-ready data, adoption", value: "3" },
+    { label: "Years across CPG, technology & automotive", value: "20+" },
+    { label: "Finance, supply chain & CRM case studies", value: `${PROJECTS.length}` },
+    { label: "Core domains: Finance, Supply Chain, CRM", value: "3" },
   ],
   highlights: [
-    "Builds AI enablement roadmaps that connect industry insight, frontier and open-source AI patterns, agentic workflows, and enterprise adoption into pragmatic execution plans.",
-    "Develops hands-on AI products, prototypes, and reusable blueprints with Python, FastAPI, React, OpenAI, Gemini, Claude, MCP integrations, ML, graph analysis, and cloud data platforms — built daily with agentic coding tools like Claude Code, Codex, Cursor, and Antigravity.",
-    "Accelerates productivity by translating complex engineering and business workflows into AI-ready data foundations, automation patterns, decision intelligence, and governed operating models.",
-    "Leads cross-organizational stakeholders through fast-moving transformation across product, finance, supply chain, manufacturing, regulatory, and technology environments.",
+    "Leads enterprise transformation across CPG, technology and semiconductor, and automotive — aligning finance, supply chain, and customer systems to business strategy and measurable outcomes.",
+    "Modernizes finance through FP&A, EPM, and consolidation platforms — OneStream, Anaplan, Oracle Hyperion / DRM, and SAP S/4 CFIN — with M&A integration, planning, and CFO reporting.",
+    "Builds supply chain and customer / CRM data foundations — SAP BOM and material master, plus Salesforce, Demandware, loyalty, campaign, fulfillment, and quote-to-cash systems.",
+    "Accelerates delivery with trusted MDM and governed data, plus pragmatic, AI-enabled workflows, prototypes, and reusable blueprints built with modern agentic tooling.",
   ],
 };
 
@@ -263,9 +266,9 @@ export const EDUCATION = [
 
 export const FEATURED_PROJECT_IDS = [
   "nvidia-intelligent-bom-and-planning-master-data-transformation",
-  "artha-ai-financial-intelligence-and-agentic-automation-platform",
   "mars-finance-data-foundation-mdm-architecture-and-persona-based-reporting",
-  "ey-ai-finance-ai-enabled-fpanda-demo-product",
+  "gm-s-4-cfin-mdm-epm-and-finance-data-harmonization",
+  "moody-s-analytics-revenue-recognition-data-transformation-and-asc-606-compliance-solution",
 ];
 
 const clientNameVariants = PROJECTS.flatMap((project) => [

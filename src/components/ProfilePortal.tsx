@@ -24,6 +24,7 @@ import KnowledgeGraph from "@/components/KnowledgeGraph";
 import ProjectCard from "@/components/ProjectCard";
 import type { KnowledgeGraphTriple, NormalizedProject, ProfileDataset } from "@/lib/profile-data";
 import { AI_TOOLCHAIN } from "@/lib/toolchain-data";
+import { DOMAIN_EXPERTISE } from "@/lib/domain-data";
 import styles from "./ProfilePortal.module.css";
 
 type ExecutiveSummary = {
@@ -82,23 +83,21 @@ const emptyFilters: Filters = {
 };
 
 const executiveHighlightTitles = [
-  "AI Enablement Roadmap Leadership",
-  "Agentic AI Product Building",
-  "Productivity Tools and Blueprints",
-  "Cross-Organization Execution at Speed",
+  "Cross-Industry Transformation",
+  "Finance, FP&A & EPM Depth",
+  "Supply Chain & CRM / Commerce",
+  "Trusted Data, AI-Enabled Delivery",
 ];
 
 const sectionLinks = [
   ["profile", "Profile"],
   ["experience", "Experience"],
   ["case-studies", "Case Studies"],
+  ["industries", "Industries"],
+  ["functions", "Functions"],
   ["architecture-tree", "Tree"],
-  ["ai-portfolio", "AI Portfolio"],
+  ["ai-portfolio", "AI"],
   ["toolchain", "Toolchain"],
-  ["finance", "Finance"],
-  ["governance", "Governance"],
-  ["sap", "SAP/S4"],
-  ["consulting", "Consulting"],
   ["knowledge-graph", "Graph"],
   ["ask-profile", "Ask"],
 ];
@@ -212,12 +211,11 @@ export default function ProfilePortal({
       /genai|agentic|ai|machine learning|ml/i.test(item),
     ),
   );
-  const financeProjects = projects.filter((project) => project.businessFunctions.includes("Finance / FP&A / CFO"));
-  const governanceProjects = projects.filter((project) => project.businessFunctions.includes("Data Governance / MDM"));
-  const sapProjects = projects.filter((project) => project.businessFunctions.includes("SAP / S4 / Supply Chain"));
-  const consultingProjects = projects.filter((project) =>
-    project.businessFunctions.includes("Consulting / Practice Development"),
+  const cpgProjects = projects.filter((project) => /cpg|food|consumer/i.test(project.industry));
+  const technologyProjects = projects.filter((project) =>
+    /technology|semiconductor|network/i.test(project.industry),
   );
+  const automotiveProjects = projects.filter((project) => /automotive/i.test(project.industry));
 
   const updateFilter = (key: keyof Filters, value: string) => setFilters((current) => ({ ...current, [key]: value }));
 
@@ -278,7 +276,7 @@ export default function ProfilePortal({
       <section className={styles.executiveSummary} aria-label="Executive summary">
         <div>
           <p className={styles.eyebrow}>Executive Summary</p>
-          <h2>AI enablement leader for agentic development, AI-native workflows, and enterprise productivity</h2>
+          <h2>Enterprise transformation leader across finance, supply chain, and customer systems — industry-proven and AI-enabled</h2>
         </div>
         <div className={styles.summaryGrid}>
           {summary.highlights.map((highlight, index) => (
@@ -350,7 +348,7 @@ export default function ProfilePortal({
               <Layers3 size={16} />
               Flagship Case Studies
             </p>
-            <h2>AI enablement, data platform, and productivity proof from the dataset</h2>
+            <h2>Industry and function proof across CPG, technology, and automotive — finance, supply chain, and CRM</h2>
           </div>
         </div>
         <div className={styles.featureGrid}>
@@ -421,7 +419,54 @@ export default function ProfilePortal({
         </div>
       </section>
 
-      <ProofSection id="ai-portfolio" title="AI Enablement & Agentic Development Portfolio" projects={aiProjects} onOpen={setSelectedProject} />
+      <section id="industries" className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <div>
+            <p className={styles.eyebrow}>
+              <Building2 size={16} />
+              Industry Coverage
+            </p>
+            <h2>Proven transformation across CPG, technology, and automotive</h2>
+          </div>
+        </div>
+      </section>
+
+      <ProofSection eyebrow="Industry" title="CPG & Consumer Products" projects={cpgProjects} onOpen={setSelectedProject} />
+      <ProofSection eyebrow="Industry" title="Technology & Semiconductor" projects={technologyProjects} onOpen={setSelectedProject} />
+      <ProofSection eyebrow="Industry" title="Automotive & Manufacturing" projects={automotiveProjects} onOpen={setSelectedProject} />
+
+      <section id="functions" className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <div>
+            <p className={styles.eyebrow}>
+              <Layers3 size={16} />
+              Function Expertise
+            </p>
+            <h2>Finance, supply chain, and customer / CRM systems depth across the enterprise</h2>
+          </div>
+        </div>
+        <div className={styles.functionGrid}>
+          {DOMAIN_EXPERTISE.map((domain) => (
+            <article key={domain.function} className={styles.functionCard}>
+              <h3>{domain.function}</h3>
+              <p>{domain.summary}</p>
+              <h4>Capabilities</h4>
+              <ul>
+                {domain.capabilities.map((capability) => (
+                  <li key={capability}>{capability}</li>
+                ))}
+              </ul>
+              <div className={styles.platformTags}>
+                {domain.platforms.map((platform) => (
+                  <span key={platform}>{platform}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <ProofSection id="ai-portfolio" eyebrow="AI-Enabled" title="AI-Enabled Delivery & Agentic Prototypes" projects={aiProjects} onOpen={setSelectedProject} />
 
       <section id="toolchain" className={styles.section}>
         <div className={styles.sectionHeader}>
@@ -451,16 +496,6 @@ export default function ProfilePortal({
         </div>
       </section>
 
-      <ProofSection id="finance" title="AI-Ready Finance & Enterprise Productivity" projects={financeProjects} onOpen={setSelectedProject} />
-      <ProofSection id="governance" title="Trusted Data Foundations / AI-Ready Platforms" projects={governanceProjects} onOpen={setSelectedProject} />
-      <ProofSection id="sap" title="Product & Supply Chain Data for Engineering Workflows" projects={sapProjects} onOpen={setSelectedProject} />
-      <ProofSection
-        id="consulting"
-        title="Cross-Org Enablement / Stakeholder Leadership"
-        projects={consultingProjects}
-        onOpen={setSelectedProject}
-      />
-
       <KnowledgeGraph triples={graphTriples} projects={projects} />
 
       <section id="ask-profile" className={styles.askSection}>
@@ -469,10 +504,10 @@ export default function ProfilePortal({
             <Bot size={16} />
             Ask My Profile
           </p>
-          <h2>Recruiter chatbot grounded in the AI enablement profile</h2>
+          <h2>Recruiter chatbot grounded in the full transformation profile</h2>
           <p>
-            Ask about agentic AI, AI-native workflow transformation, developer productivity patterns, AI-ready data
-            foundations, cross-org leadership, or specific case studies.
+            Ask about CPG, technology, and automotive experience; finance, FP&amp;A and EPM platforms; supply chain and
+            BOM data; CRM, commerce and quote-to-cash systems; or specific case studies.
           </p>
         </div>
         <div className={styles.chatShell}>
@@ -496,8 +531,8 @@ export default function ProfilePortal({
       </section>
 
       <footer className={styles.footer}>
-        <p>© {new Date().getFullYear()} Sanat Vats. AI Enablement Engineering Director.</p>
-        <p>Grounded in enterprise data strategy, agentic blueprints, and trusted foundations.</p>
+        <p>© {new Date().getFullYear()} Sanat Vats. Enterprise Transformation Leader — Finance, Supply Chain &amp; CRM.</p>
+        <p>Industry-proven across CPG, technology, and automotive — with trusted data foundations and AI-enabled delivery.</p>
       </footer>
 
       {selectedProject && (
@@ -546,17 +581,20 @@ function ProofSection({
   title,
   projects,
   onOpen,
+  eyebrow = "Portfolio Lane",
 }: {
-  id: string;
+  id?: string;
   title: string;
   projects: NormalizedProject[];
   onOpen: (project: NormalizedProject) => void;
+  eyebrow?: string;
 }) {
+  if (projects.length === 0) return null;
   return (
     <section id={id} className={styles.proofSection}>
       <div className={styles.sectionHeader}>
         <div>
-          <p className={styles.eyebrow}>Portfolio Lane</p>
+          <p className={styles.eyebrow}>{eyebrow}</p>
           <h2>{title}</h2>
         </div>
       </div>

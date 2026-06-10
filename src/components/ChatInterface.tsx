@@ -12,10 +12,10 @@ type ChatMessage = {
 };
 
 const QUICK_PROMPTS = [
-  'How has he enabled agentic AI adoption?',
-  'What is his AI-native toolchain — MCP, Claude Code, Cursor?',
-  'Show quantified business impact',
-  'How does he fit an AI enablement leadership role?',
+  'Walk me through his CPG, tech & automotive work',
+  'What finance, FP&A & EPM platforms has he led?',
+  'What CRM, commerce & supply chain systems?',
+  'Show his quantified business impact',
 ];
 
 export default function ChatInterface() {
