@@ -187,14 +187,14 @@ export const EXECUTIVE_SUMMARY = {
   location: "Evanston, IL",
   linkedin: "https://www.linkedin.com/in/sanat/",
   github: "https://github.com/sanatv",
-  headline: "Enterprise Transformation Leader | Finance, Supply Chain & CRM, AI-Enabled",
+  headline: "Agentic AI Driven Enterprise Transformation | Finance, Supply Chain & CRM",
   subheadline:
     "20+ year enterprise transformation leader across CPG, technology, and automotive — modernizing finance, supply chain, and customer/CRM systems with trusted data foundations, EPM and ERP platforms, and pragmatic, AI-enabled delivery.",
   positioning: [
-    "Enterprise Transformation Leader",
+    "Agentic AI Driven Enterprise Transformation",
     "Finance / FP&A & EPM Systems",
     "Supply Chain & Customer / CRM Data",
-    "AI-Enabled Delivery",
+    "Agentic AI Delivery",
   ],
   metrics: [
     { label: "Years across CPG, technology & automotive", value: "20+" },

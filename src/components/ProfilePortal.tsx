@@ -531,7 +531,7 @@ export default function ProfilePortal({
       </section>
 
       <footer className={styles.footer}>
-        <p>© {new Date().getFullYear()} Sanat Vats. Enterprise Transformation Leader — Finance, Supply Chain &amp; CRM.</p>
+        <p>© {new Date().getFullYear()} Sanat Vats. Agentic AI Driven Enterprise Transformation — Finance, Supply Chain &amp; CRM.</p>
         <p>Industry-proven across CPG, technology, and automotive — with trusted data foundations and AI-enabled delivery.</p>
       </footer>
 
