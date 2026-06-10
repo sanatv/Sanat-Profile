@@ -198,6 +198,14 @@
   animation: micPulse 1.3s ease-in-out infinite;
 }
 
+.voiceNote {
+  padding: 0 1rem 0.85rem;
+  margin-top: -0.35rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
 @keyframes micPulse {
   0%, 100% {
     box-shadow: 0 0 0 0 rgba(155, 124, 255, 0.5);

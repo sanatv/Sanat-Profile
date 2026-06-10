@@ -1,6 +1,5 @@
 'use client';
 
-import { useId } from 'react';
 import styles from './AvatarBot.module.css';
 
 export type AvatarState = 'idle' | 'thinking' | 'speaking';
@@ -10,8 +9,11 @@ type AvatarBotProps = {
   size?: number;
 };
 
+// Every avatar shares the same gradient, so a constant id keeps server and
+// client markup identical (a useId() value mismatches during hydration).
+const gradientId = 'avatarBotGradient';
+
 export default function AvatarBot({ state = 'idle', size = 64 }: AvatarBotProps) {
-  const gradientId = useId();
   const accent = `url(#${gradientId})`;
 
   return (

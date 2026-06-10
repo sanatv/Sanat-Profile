@@ -12,13 +12,22 @@ type ChatMessage = {
 };
 
 // Minimal Web Speech API typing (not in the standard DOM lib for webkit).
+interface SpeechRecognitionResultLike {
+  0: { transcript: string };
+  isFinal: boolean;
+}
+interface SpeechRecognitionEventLike {
+  resultIndex: number;
+  results: ArrayLike<SpeechRecognitionResultLike>;
+}
 interface SpeechRecognitionLike {
   lang: string;
   interimResults: boolean;
   continuous: boolean;
-  onresult: (event: { results: ArrayLike<ArrayLike<{ transcript: string }>> }) => void;
+  onstart: () => void;
+  onresult: (event: SpeechRecognitionEventLike) => void;
   onend: () => void;
-  onerror: () => void;
+  onerror: (event: { error: string }) => void;
   start: () => void;
   stop: () => void;
 }
@@ -47,8 +56,17 @@ export default function ChatInterface() {
   const [isListening, setIsListening] = useState(false);
   const [ttsSupported, setTtsSupported] = useState(false);
   const [sttSupported, setSttSupported] = useState(false);
+  const [voiceNote, setVoiceNote] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
+  const finalTranscriptRef = useRef('');
+  const noteTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const flashNote = useCallback((message: string) => {
+    setVoiceNote(message);
+    if (noteTimerRef.current) clearTimeout(noteTimerRef.current);
+    noteTimerRef.current = setTimeout(() => setVoiceNote(''), 4000);
+  }, []);
 
   // Avatar reacts to real audio when speaking, otherwise to the request lifecycle.
   const avatarState: AvatarState = isSpeaking
@@ -162,19 +180,48 @@ export default function ChatInterface() {
     const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!Recognition) return;
     stopSpeaking();
+    setVoiceNote('');
+
     const recognition = new Recognition();
     recognition.lang = 'en-US';
-    recognition.interimResults = false;
-    recognition.continuous = false;
+    recognition.interimResults = true; // live feedback so it doesn't feel dead
+    recognition.continuous = true; // keep listening until the user stops it
+
+    // Keep anything already typed, then append spoken words.
+    finalTranscriptRef.current = inputValue ? `${inputValue.trim()} ` : '';
+
+    recognition.onstart = () => setIsListening(true);
     recognition.onresult = (event) => {
-      const transcript = event.results[0]?.[0]?.transcript ?? '';
-      if (transcript) setInputValue(transcript);
+      let interim = '';
+      for (let i = event.resultIndex; i < event.results.length; i += 1) {
+        const result = event.results[i];
+        const transcript = result[0]?.transcript ?? '';
+        if (result.isFinal) {
+          finalTranscriptRef.current += `${transcript} `;
+        } else {
+          interim += transcript;
+        }
+      }
+      setInputValue((finalTranscriptRef.current + interim).replace(/\s+/g, ' ').trim());
+    };
+    recognition.onerror = (event) => {
+      if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
+        flashNote('Microphone blocked — allow mic access in your browser, then try again.');
+      } else if (event.error === 'no-speech') {
+        flashNote("Didn't catch anything — tap the mic and speak.");
+      } else if (event.error !== 'aborted') {
+        flashNote('Voice input had a hiccup — please try again.');
+      }
+      setIsListening(false);
     };
     recognition.onend = () => setIsListening(false);
-    recognition.onerror = () => setIsListening(false);
+
     recognitionRef.current = recognition;
-    setIsListening(true);
-    recognition.start();
+    try {
+      recognition.start();
+    } catch {
+      setIsListening(false);
+    }
   };
 
   const lastMessage = messages[messages.length - 1];
@@ -269,6 +316,11 @@ export default function ChatInterface() {
           <Send size={18} />
         </button>
       </form>
+      {(isListening || voiceNote) && (
+        <p className={styles.voiceNote} role="status">
+          {isListening ? 'Listening… speak now, then tap the mic to stop.' : voiceNote}
+        </p>
+      )}
     </div>
   );
 }
