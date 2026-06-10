@@ -102,6 +102,11 @@ const slugify = (value: string) =>
 const primaryIndustry = (industry: string) => industry.split("/")[0].trim();
 const publicIndustryLabel = (industry: string) => industry.split("/").map((part) => part.trim()).slice(0, 2).join(" / ");
 
+const publicProjectLabel = (industry: string) => {
+  const label = publicIndustryLabel(industry);
+  return /\btransformation$/i.test(label) ? label : `${label} transformation`;
+};
+
 const functionRules: Array<[string, string[]]> = [
   ["Finance / FP&A / CFO", ["finance", "fp&a", "cfo", "planning", "forecast", "aop", "consolidation", "revenue"]],
   ["Data Governance / MDM", ["governance", "mdm", "master data", "hierarchy", "dictionary", "data quality"]],
@@ -143,7 +148,7 @@ export const PROJECTS: NormalizedProject[] = PROFILE_DATASET.projects.map((proje
     id: slugify(`${client}-${project["Project Name"]}`),
     name: project["Project Name"],
     client,
-    publicLabel: `${publicIndustryLabel(project.Industry)} transformation`,
+    publicLabel: publicProjectLabel(project.Industry),
     industry: project.Industry,
     role: project["Your Role"],
     problem: project["Business Problem"],
@@ -195,7 +200,7 @@ export const EXECUTIVE_SUMMARY = {
   ],
   highlights: [
     "Builds AI enablement roadmaps that connect industry insight, frontier and open-source AI patterns, agentic workflows, and enterprise adoption into pragmatic execution plans.",
-    "Develops hands-on AI products, prototypes, and reusable blueprints with Python, React, OpenAI, Gemini, ML, graph analysis, and cloud data platforms.",
+    "Develops hands-on AI products, prototypes, and reusable blueprints with Python, FastAPI, React, OpenAI, Gemini, Claude, MCP integrations, ML, graph analysis, and cloud data platforms — built daily with agentic coding tools like Claude Code, Codex, Cursor, and Antigravity.",
     "Accelerates productivity by translating complex engineering and business workflows into AI-ready data foundations, automation patterns, decision intelligence, and governed operating models.",
     "Leads cross-organizational stakeholders through fast-moving transformation across product, finance, supply chain, manufacturing, regulatory, and technology environments.",
   ],
