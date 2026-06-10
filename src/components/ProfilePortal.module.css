@@ -509,7 +509,9 @@
 }
 
 .chatShell {
-  min-height: 640px;
+  /* Bounded height so the messages list scrolls inside the panel instead of
+     growing and dragging the whole page. */
+  height: clamp(560px, 80vh, 820px);
 }
 
 .videoSection {
@@ -777,6 +779,7 @@
   }
 
   .chatShell {
-    min-height: 600px;
+    height: 72vh;
+    min-height: 460px;
   }
 }

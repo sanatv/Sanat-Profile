@@ -57,7 +57,9 @@ export default function ChatInterface() {
   const [ttsSupported, setTtsSupported] = useState(false);
   const [sttSupported, setSttSupported] = useState(false);
   const [voiceNote, setVoiceNote] = useState('');
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [bottomSpace, setBottomSpace] = useState(0);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const lastQuestionRef = useRef<HTMLDivElement | null>(null);
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const finalTranscriptRef = useRef('');
   const noteTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -85,12 +87,32 @@ export default function ChatInterface() {
     );
   }, []);
 
-  // Auto scroll to bottom
+  // Keep a one-panel-height spacer below the messages so the latest question can
+  // always be scrolled to the top of the panel (the blank sits below the answer,
+  // out of view unless you scroll past it). Track viewport resizes.
   useEffect(() => {
-    if (messages.length > 0) {
-      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [messages]);
+    const updateSpace = () => {
+      const container = messagesContainerRef.current;
+      if (container) setBottomSpace(container.clientHeight);
+    };
+    updateSpace();
+    window.addEventListener('resize', updateSpace);
+    return () => window.removeEventListener('resize', updateSpace);
+  }, []);
+
+  // Scroll the newest question to the top of the chat panel — and only the panel,
+  // never the whole page — so the answer can be read from its start. Setting
+  // scrollTop directly avoids the page-level jump and per-chunk flicker that
+  // element.scrollIntoView() caused.
+  const pinQuestionToTop = useCallback(() => {
+    requestAnimationFrame(() => {
+      const container = messagesContainerRef.current;
+      const question = lastQuestionRef.current;
+      if (!container || !question) return;
+      container.scrollTop =
+        question.getBoundingClientRect().top - container.getBoundingClientRect().top + container.scrollTop;
+    });
+  }, []);
 
   const stopSpeaking = useCallback(() => {
     if (typeof window !== 'undefined' && window.speechSynthesis) {
@@ -128,6 +150,7 @@ export default function ChatInterface() {
     setMessages(newMessages);
     setInputValue('');
     setIsLoading(true);
+    pinQuestionToTop();
 
     try {
       const res = await fetch('/api/chat', {
@@ -225,6 +248,7 @@ export default function ChatInterface() {
   };
 
   const lastMessage = messages[messages.length - 1];
+  const lastUserId = [...messages].reverse().find((m) => m.role === 'user')?.id;
 
   return (
     <div className={`glass-panel ${styles.chatContainer}`}>
@@ -250,7 +274,7 @@ export default function ChatInterface() {
         </div>
       </div>
 
-      <div className={styles.messagesContainer}>
+      <div className={styles.messagesContainer} ref={messagesContainerRef}>
         {messages.length === 0 && (
           <div className={styles.emptyState}>
             <AvatarBot state={avatarState} size={88} />
@@ -269,7 +293,11 @@ export default function ChatInterface() {
         )}
 
         {messages.map((m) => (
-          <div key={m.id} className={`${styles.messageWrapper} ${m.role === 'user' ? styles.user : styles.assistant}`}>
+          <div
+            key={m.id}
+            ref={m.id === lastUserId ? lastQuestionRef : undefined}
+            className={`${styles.messageWrapper} ${m.role === 'user' ? styles.user : styles.assistant}`}
+          >
             {m.role === 'user' ? (
               <div className={styles.avatar}>
                 <User size={18} />
@@ -290,7 +318,9 @@ export default function ChatInterface() {
             </div>
           </div>
         )}
-        <div ref={messagesEndRef} />
+        {messages.length > 0 && bottomSpace > 0 && (
+          <div style={{ minHeight: bottomSpace, flexShrink: 0 }} aria-hidden />
+        )}
       </div>
 
       <form onSubmit={onSubmit} className={styles.inputArea}>
