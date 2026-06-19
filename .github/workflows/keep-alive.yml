@@ -1,0 +1,36 @@
+name: Keep profile warm
+
+# Pings the deployed sanat-profile so the Render free-tier instance is touched
+# on a schedule. NOTE: Render sleeps after 15 min of inactivity, so a 25-min
+# cadence does not fully prevent spin-down — change the cron to '*/10 * * * *'
+# (every 10 min) if you want it warm for visitors during the day.
+#
+# Set the live URL once as a repo variable (Settings → Secrets and variables →
+# Actions → Variables → New variable):  PROFILE_URL = https://your-app.onrender.com
+# If unset, it falls back to the conventional Render URL below.
+
+on:
+  schedule:
+    - cron: "*/25 * * * *" # ~every 25 min (fires at :00, :25, :50 UTC)
+  workflow_dispatch: {} # allows manual "Run workflow" from the Actions tab
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping /api/health
+        run: |
+          BASE="${{ vars.PROFILE_URL || 'https://sanat-profile.onrender.com' }}"
+          URL="${BASE%/}/api/health"
+          echo "Pinging $URL"
+          for attempt in 1 2 3 4; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 75 "$URL" || echo "000")
+            if [ "$code" = "200" ]; then
+              echo "OK ($code) on attempt $attempt"
+              exit 0
+            fi
+            echo "Attempt $attempt got HTTP $code — instance may be waking; retrying in 30s"
+            sleep 30
+          done
+          echo "Ping failed after retries"
+          exit 1
