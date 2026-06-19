@@ -1,9 +1,10 @@
 name: Keep profile warm
 
 # Pings the deployed sanat-profile so the Render free-tier instance is touched
-# on a schedule. NOTE: Render sleeps after 15 min of inactivity, so a 25-min
-# cadence does not fully prevent spin-down — change the cron to '*/10 * * * *'
-# (every 10 min) if you want it warm for visitors during the day.
+# on a schedule. A 20-min cadence keeps it awake most of the time while staying
+# well under the 750 free instance-hours/month cap (~540 hrs/month at 24/7).
+# NOTE: Render sleeps after 15 min idle, so there is still a brief nap each
+# cycle — change the cron to '*/10 * * * *' if you want it fully warm.
 #
 # Set the live URL once as a repo variable (Settings → Secrets and variables →
 # Actions → Variables → New variable):  PROFILE_URL = https://your-app.onrender.com
@@ -11,7 +12,7 @@ name: Keep profile warm
 
 on:
   schedule:
-    - cron: "*/25 * * * *" # ~every 25 min (fires at :00, :25, :50 UTC)
+    - cron: "*/20 * * * *" # every 20 min (fires at :00, :20, :40 UTC)
   workflow_dispatch: {} # allows manual "Run workflow" from the Actions tab
 
 jobs:

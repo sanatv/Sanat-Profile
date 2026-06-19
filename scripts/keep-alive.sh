@@ -7,18 +7,18 @@
 #
 # Environment:
 #   PROFILE_URL   base URL of the deployed app (default below)
-#   INTERVAL      seconds between pings in --loop mode (default 1500 = 25 min)
+#   INTERVAL      seconds between pings in --loop mode (default 1200 = 20 min)
 #
 # To schedule on macOS without keeping a terminal open, add to crontab
-# (`crontab -e`), one ping every 25 minutes:
-#   */25 * * * * PROFILE_URL=https://sanat-profile.onrender.com /full/path/scripts/keep-alive.sh >> /tmp/sanat-keepalive.log 2>&1
-# (Use */10 instead of */25 to actually keep it warm against the 15-min sleep.)
+# (`crontab -e`), one ping every 20 minutes:
+#   */20 * * * * PROFILE_URL=https://sanat-profile.onrender.com /full/path/scripts/keep-alive.sh >> /tmp/sanat-keepalive.log 2>&1
+# (Use */10 instead of */20 to keep it fully warm against the 15-min sleep.)
 
 set -euo pipefail
 
 BASE="${PROFILE_URL:-https://sanat-profile.onrender.com}"
 URL="${BASE%/}/api/health"
-INTERVAL="${INTERVAL:-1500}"
+INTERVAL="${INTERVAL:-1200}"
 
 ping_once() {
   local code
