@@ -10,9 +10,9 @@
 #   INTERVAL      seconds between pings in --loop mode (default 1200 = 20 min)
 #
 # To schedule on macOS without keeping a terminal open, add to crontab
-# (`crontab -e`), one ping every 20 minutes:
-#   */20 * * * * PROFILE_URL=https://sanat-profile.onrender.com /full/path/scripts/keep-alive.sh >> /tmp/sanat-keepalive.log 2>&1
-# (Use */10 instead of */20 to keep it fully warm against the 15-min sleep.)
+# (`crontab -e`). Local cron uses your Mac's own timezone (no UTC math needed),
+# so for every 20 min during ~8 AM-6:30 PM Central:
+#   */20 8-18 * * * PROFILE_URL=https://sanat-profile.onrender.com /full/path/scripts/keep-alive.sh >> /tmp/sanat-keepalive.log 2>&1
 
 set -euo pipefail
 

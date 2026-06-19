@@ -1,10 +1,14 @@
 name: Keep profile warm
 
-# Pings the deployed sanat-profile so the Render free-tier instance is touched
-# on a schedule. A 20-min cadence keeps it awake most of the time while staying
-# well under the 750 free instance-hours/month cap (~540 hrs/month at 24/7).
-# NOTE: Render sleeps after 15 min idle, so there is still a brief nap each
-# cycle — change the cron to '*/10 * * * *' if you want it fully warm.
+# Pings the deployed sanat-profile every 20 minutes during US Central business
+# hours (8:00 AM – ~6:30 PM) so it is warm for daytime visitors while using only
+# ~315 instance-hrs/month — far under the 750 free cap.
+#
+# IMPORTANT: GitHub cron is UTC and does NOT follow daylight saving. The times
+# below map to Central DAYLIGHT time (CDT, UTC-5), correct ~Mar–Nov. After DST
+# ends (early Nov) the same UTC times become 7:00 AM–5:20 PM CST. To keep the
+# 8:00 AM–6:30 PM window in winter, change the hours to: "*/20 14-23 * * *"
+# plus "0,20 0 * * *".
 #
 # Set the live URL once as a repo variable (Settings → Secrets and variables →
 # Actions → Variables → New variable):  PROFILE_URL = https://your-app.onrender.com
@@ -12,7 +16,9 @@ name: Keep profile warm
 
 on:
   schedule:
-    - cron: "*/20 * * * *" # every 20 min (fires at :00, :20, :40 UTC)
+    # Every 20 min, 13:00–23:20 UTC = 8:00 AM – 6:20 PM CDT (stays warm to ~6:35 PM)
+    - cron: "*/20 13-22 * * *"
+    - cron: "0,20 23 * * *"
   workflow_dispatch: {} # allows manual "Run workflow" from the Actions tab
 
 jobs:
